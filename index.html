@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/menu.css">
+    <link rel="stylesheet" href="/css/action.css">
+    <link rel="stylesheet" href="/css/information.css">
+    <link rel="stylesheet" href="/css/location.css">
+    <link rel="stylesheet" href="/css/products.css">
+    <link rel="stylesheet" href="/css/shops.css">
+    <link rel="stylesheet" href="/css/buttons.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+<!--
+  Main heading with drop down list.
+-->
+        <div class="row menu">
+            <div class="col-xs-4">
+                <span>
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-default menu-btn dropdown-toggle" aria-label="Left Align" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-th-list" aria-hidden="true"> Menu </span>
+                        </button>
+                        <ul class="dropdown-menu menu-list">
+                          <li><a href="#">New Game</a></li>
+                          <li><a href="#">Load</a></li>
+                          <li><a href="#">Save</a></li>
+                          <li><a href="#">Game Setting</a></li>
+                        </ul>
+                    </div>
+                </span>
+            </div>
+            <div class="col-xs-4 h1-menu">
+                <h1>Candy Wars</h1>
+            </div>
+            <div class="col-xs-4">
+            </div>
+        </div>
+<!--
+  Action heading.
+-->
+        <div class="row">
+            <div class="col-xs-8 action-head">
+                <h4>Action Menu</h4>
+            </div>
+            <div class="col-xs-1 boundry"></div>
+<!--
+  Information Heading.
+-->
+            <div class="col-xs-3 information-head">
+                <h4>Information</h4>
+            </div>
+        </div>
+<!--
+  Action table.
+-->
+        <div class="row">
+            <div class="col-xs-8 action-table">
+                <div class="row">
+                    <div class="col-xs-6">
+<!--
+  fight head.
+-->
+                        <div class="row">
+                            <div class="col-xs-11 fight-head">
+                                <h5>Fight Menu</h5>
+                            </div>
+                            <div class="col-xs-1 boundry"></div>
+                        </div>
+<!--
+  fight table.
+-->
+                        <div class="row">
+                            <div class="col-xs-11 fight-table">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <button class="fight-btn">
+                                                    <span class="glyphicon glyphicon-fire" aria-hidden="true"> Fight </span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <button class="fight-btn">
+                                                    <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"> Run </span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <button class="fight-btn">
+                                                    <span class="glyphicon glyphicon-user" aria-hidden="true"> Surrender </span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <button class="fight-btn">
+                                                    <span class="glyphicon glyphicon-usd" aria-hidden="true"> Bribe </span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-1 boundry"></div>
+                        </div>
+<!--
+  fight-results head.
+-->
+                        <div class="row">
+                            <div class="col-xs-11 fight-results-head">
+                                <h5>Results</h5>
+                            </div>
+                            <div class="col-xs-1 boundry"></div>
+                        </div>
+<!--
+  fight-results table.
+-->
+                        <div class="row">
+                            <div class="col-xs-11 fight-results-table">
+                            </div>
+                            <div class="col-xs-1 boundry"></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+<!--
+  backpack head.
+-->
+                        <div class="row">
+                            <div class="col-xs-12 backpack-head">
+                                <h5>Backpack</h5>
+                            </div>
+                        </div>
+<!--
+  backpack table.
+-->
+                        <div class="row">
+                            <div class="col-xs-12 backpack-table">
+                                <div class="row">
+                                    <div class="col-xs-6">
+<!--
+  weapons head.
+-->
+                                        <div class="row">
+                                            <div class="col-xs-11 weapons-head">
+                                                Weapons
+                                            </div>
+                                            <div class="col-xs-1 boundry"></div>
+                                        </div>
+<!--
+  weapons table.
+-->
+                                        <div class="row">
+                                            <div class="col-xs-11 weapons-table">
+                                                <select multiple class="form-control" id="weapons_Select">
+                                                    <option id="weapon0"></option>
+                                                    <option id="weapon1"></option>
+                                                    <option id="weapon2"></option>
+                                                    <option id="weapon3"></option>
+                                                    <option id="weapon4"></option>
+                                                    <option id="weapon5"></option>
+                                                    <option id="weapon6"></option>
+                                                    <option id="weapon7"></option>
+                                                </select>
+                                            </div>
+                                            <div class="col-xs-1 boundry"></div>
+                                        </div>
+<!--
+  items head.
+-->
+                                        <div class="row">
+                                            <div class="col-xs-11 items-head">
+                                                Items
+                                            </div>
+                                            <div class="col-xs-1 boundry"></div>
+                                        </div>
+<!--
+  items table.
+-->
+                                        <div class="row">
+                                            <div class="col-xs-11 items-table">
+                                                <select multiple class="form-control" id="item_Select">
+                                                    <option id="item0"></option>
+                                                    <option id="item1"></option>
+                                                    <option id="item2"></option>
+                                                    <option id="item3"></option>
+                                                    <option id="item4"></option>
+                                                    <option id="item5"></option>
+                                                    <option id="item6"></option>
+                                                    <option id="item7"></option>
+                                                </select>
+                                            </div>
+                                            <div class="col-xs-1 boundry"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6">
+<!--
+  backpack products head.
+-->
+                                        <div class="row">
+                                            <div class="col-xs-12 backpack-products-head">
+                                                products
+                                            </div>
+                                        </div>
+<!--
+  backpack products table.
+-->
+                                        <div class="row">
+                                            <div class="col-xs-12 backpack-products-table">
+                                                <select multiple class="form-control" id="product_Select">
+                                                    <option id="product0"></option>
+                                                    <option id="product1"></option>
+                                                    <option id="product2"></option>
+                                                    <option id="product3"></option>
+                                                    <option id="product4"></option>
+                                                    <option id="product5"></option>
+                                                    <option id="product6"></option>
+                                                    <option id="product7"></option>
+                                                    <option id="product8"></option>
+                                                    <option id="product9"></option>
+                                                    <option id="product10"></option>
+                                                    <option id="product11"></option>
+                                                    <option id="product12"></option>
+                                                    <option id="product13"></option>
+                                                    <option id="product14"></option>
+                                                    <option id="product15"></option>
+                                                    <option id="product16"></option>
+                                                    <option id="product17"></option>
+                                                    <option id="product18"></option>
+                                                    <option id="product19"></option>
+                                                    <option id="product20"></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-1 boundry"></div>
+<!--
+  Information table.
+-->
+            <div class="col-xs-3 information-table">
+<!--
+  Informant head.
+-->
+                <div class="row">
+                    <div class="col-xs-12 informant-head">
+                        Informant Messages
+                    </div>
+                </div>
+<!--
+  Informant table.
+-->
+                <div class="row">
+                    <div class="col-xs-12 informant-table">
+                        <select multiple class="form-control" id="informant">
+
+                        </select>
+                    </div>
+                </div>
+<!--
+  player head.
+-->
+                <div class="row">
+                    <div class="col-xs-12 player-head">
+                        Player Information
+                    </div>
+                </div>
+<!--
+  player table.
+-->
+                <div class="row">
+                    <div class="col-xs-12 player-table">
+                        <div class="row">
+                            <div class="col-xs-11" id="player_Health_Bar">
+                                <div class="row" id="test">
+                                    <!--<div class="col-xs-12" id="player_Health_Bar_Color">
+                                        Player Health
+                                    </div>-->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-11" id="player_Armour_Bar">
+                                <div class="row">
+                                    <div class="col-xs-12" id="player_Armour_Bar_Color">
+                                        Player Armour
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-11" id="player_Money">
+                                Player Money:
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-11">
+                                <h1 id="player_Money_Display">1000</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!--
+  location head.
+-->
+        <div class="row">
+            <div class="col-xs-3 location-head">
+                <h4>Location</h4>
+            </div>
+            <div class="col-xs-1 boundry"></div>
+<!--
+  products head.
+-->
+            <div class="col-xs-4 products-head">
+                <h4>Products</h4>
+            </div>
+            <div class="col-xs-1 boundry"></div>
+<!--
+  shop head.
+-->
+            <div class="col-xs-3 shop-head">
+                <h4>Shop</h4>
+            </div>
+        </div>
+<!--
+  location table.
+-->
+        <div class="row">
+            <div class="col-xs-3 location-table">
+<!--
+  current location head.
+-->
+                <div class="row">
+                    <div class="col-xs-12 current-location-head">
+                        Current Location
+                    </div>
+                </div>
+<!--
+  current location table.
+-->
+                <div class="row">
+                    <div class="col-xs-12 current-location-table">
+                        <h3 id="current_location">Select Start Location</h3>
+                    </div>
+                </div>
+<!--
+  travelto head.
+-->
+                <div class="row">
+                    <div class="col-xs-12 travelto-head">
+                        Travel To
+                    </div>
+                </div>
+<!--
+  travelto table.
+-->
+                <div class="row">
+                    <div class="col-xs-12 travelto-table">
+                        <div class="row travel-destinations">
+                            <select multiple class="form-control" id="travel_To">
+                                <option value="0">Australia Canberra</option>
+                                <option value="1">Brazil Brasilia</option>
+                                <option value="2">China Beijing</option>
+                                <option value="3">France Paris</option>
+                                <option value="4">Germany Berlin</option>
+                                <option value="5">Italy Rome</option>
+                                <option value="6">Japan Tokyo</option>
+                                <option value="7">Mexico Mexico City</option>
+                                <option value="8">Netherlands Amsterdam</option>
+                                <option value="9">Russia Moscow</option>
+                                <option value="10">Singapore Singapore</option>
+                                <option value="11">South Africa Pretoria</option>
+                                <option value="12">United Kingdom London</option>
+                                <option value="13">USA	Washington, D.C.</option>
+                                <option value="14">Venezuela  Caracas</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="row">
+                            <button class="travel-btn" id="flyTo">
+                                <span class="glyphicon glyphicon-plane" aria-hidden="true"> Fly</span>
+                            </button>
+                            <button class="travel-btn" id="stay">
+                                <span class="glyphicon glyphicon-home" aria-hidden="true"> Stay</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-1 boundry"></div>
+<!--
+  products table.
+-->
+            <div class="col-xs-4 products-table">
+                <div class="row">
+                    <div class="col-xs-10">
+<!--
+  products sub head.
+-->
+                        <div class="row">
+                            <div class="col-xs-12 products-sub-head">
+                                Products Available
+                            </div>
+                        </div>
+<!--
+  products sub table.
+-->
+                        <div class="row">
+                            <div class="col-xs-12 products-sub-table">
+                                <select multiple class="form-control" id="products_Select">
+                                    <option id="Candy0" value="0"></option>
+                                    <option id="Candy1" value="1"></option>
+                                    <option id="Candy2" value="2"></option>
+                                    <option id="Candy3" value="3"></option>
+                                    <option id="Candy4" value="4"></option>
+                                    <option id="Candy5" value="5"></option>
+                                    <option id="Candy6" value="6"></option>
+                                    <option id="Candy7" value="7"></option>
+                                    <option id="Candy8" value="8"></option>
+                                    <option id="Candy9" value="9"></option>
+                                    <option id="Candy10" value="10"></option>
+                                    <option id="Candy11" value="11"></option>
+                                    <option id="Candy12" value="12"></option>
+                                    <option id="Candy13" value="13"></option>
+                                    <option id="Candy14" value="14"></option>
+                                </select>
+                            </div>
+                        </div>
+<!--
+  products wanted head.
+-->
+                        <div class="row">
+                            <div class="col-xs-12 products-wanted-head">
+                                Products Wanted
+                            </div>
+                        </div>
+<!--
+  products wanted table.
+-->
+                        <div class="row">
+                            <div class="col-xs-12 products-wanted-table">
+                                <select multiple class="form-control" id="products_Wanted">
+                                    <option id="wanted0"></option>
+                                    <option id="wanted1"></option>
+                                    <option id="wanted2"></option>
+                                    <option id="wanted3"></option>
+                                    <option id="wanted4"></option>
+                                    <option id="wanted5"></option>
+                                    <option id="wanted6"></option>
+                                    <option id="wanted7"></option>
+                                    <option id="wanted8"></option>
+                                    <option id="wanted9"></option>
+                                    <option id="wanted10"></option>
+                                    <option id="wanted11"></option>
+                                    <option id="wanted12"></option>
+                                    <option id="wanted13"></option>
+                                    <option id="wanted14"></option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="row">
+                            <button class="buy-btn" id="product_Buy_Btn">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"> Buy</span>
+                            </button>
+                        </div>
+                        <div class="row">
+
+                        </div>
+                        <div class="row">
+                            <button class="sell-btn">
+                                <span class="glyphicon glyphicon-minus" aria-hidden="true"> Sell</span>
+                            </button>
+                        </div>
+                        <div class="row">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-1 boundry"></div>
+<!--
+  shops table.
+-->
+            <div class="col-xs-3 shop-table">
+                <div class="row">
+                    <div class="col-xs-9">
+<!--
+  shop weapons head.
+-->
+                        <div class="row">
+                            <div class="col-xs-12 shop-weapon-head">
+                                Weapons
+                            </div>
+                        </div>
+<!--
+  shop weapons table.
+-->
+                        <div class="row">
+                            <div class="col-xs-12 shop-weapon-table">
+                                <select multiple class="form-control" id="shop_Weapons">
+                                    <option>Bare Fist</option>
+                                    <option>Plastic Sword</option>
+                                    <option>Water Pistol</option>
+                                    <option>Nerf Pistol</option>
+                                    <option>Belt</option>
+                                    <option>BB Gun</option>
+                                    <option>Pepper Spray</option>
+                                    <option>Paintball Gun</option>
+                                </select>
+                            </div>
+                        </div>
+<!--
+  shop items head.
+-->
+                        <div class="row">
+                            <div class="col-xs-12 shop-items-head">
+                                Items
+                            </div>
+                        </div>
+<!--
+  shop items table.
+-->
+                        <div class="row">
+                            <div class="col-xs-12 shop-items-table">
+                                <select multiple class="form-control" id="shop_Items">
+                                    <option>Water Baloon</option>
+                                    <option>Paintball Granade</option>
+                                    <option>Leather Jacket</option>
+                                    <option>Padlock</option>
+                                    <option>Dog Poop</option>
+                                    <option>Running Shoes</option>
+                                    <option>Energy Drink</option>
+                                    <option>Paintball Ammo</option>
+                                </select>
+                            </div>
+                        </div>
+                </div>
+<!--
+  shop buy/sell buttons.
+-->
+                <div class="col-xs-3">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <button class="shop-buy-btn">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"> Buy</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <button class="shop-sell-btn">
+                                <span class="glyphicon glyphicon-minus" aria-hidden="true"> Sell</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="js/player.js"></script>
+    <script src="js/candy.js"></script>
+    <script src="js/initcandy.js"></script>
+    <script src="js/engine.js"></script>
+    <script src="js/location.js"></script>
+    <script src="js/informant.js"></script>
+    <script src="js/buysellproducts.js"></script>
+    <script src="js/economy.js"></script>
+    <script src="js/npc.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+.location-head {
+    background-color: #26c6da;
+    box-shadow: 0px 0px 6px grey;
+    margin-top: 50px;
+}
+
+.location-table {
+    border-style: hidden;
+    box-shadow: 0px 4px 6px grey;
+    margin-top: 0px;
+    height: 400px
+}
+
+.current-location-head {
+    background-color: #80deea;
+    box-shadow: 0px 0px 6px grey;
+    margin-top: 5px;
+}
+
+.current-location-table{
+    padding-top: 5px;
+    border-style: hidden;
+    box-shadow: 0px 4px 6px grey;
+    margin-top: 0px;
+    height: 85px;
+}
+
+.travelto-head {
+    background-color: #80deea;
+    box-shadow: 0px 0px 6px grey;
+    margin-top: 5px;
+}
+
+.travelto-table {
+    border-style: hidden;
+    box-shadow: 0px 4px 6px grey;
+    margin-top: 0px;
+    height: 185px;
+}
+
+.travel-destinations {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 0px;
+    margin-top: 10px;
+}
+
+#travel_To {
+    height: 165px
+}

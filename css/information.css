@@ -1,0 +1,83 @@
+.information-head {
+    background-color: #26c6da;
+    box-shadow: 0px 0px 6px grey;
+    margin-top: 50px;
+}
+
+.information-table {
+    border-style: hidden;
+    box-shadow: 0px 4px 6px grey;
+    margin-top: 0px;
+    height: 400px
+}
+
+.informant-head {
+    background-color: #80deea;
+    box-shadow: 0px 0px 6px grey;
+    margin-top: 5px;
+}
+
+.informant-table {
+    border-style: hidden;
+    box-shadow: 0px 4px 6px grey;
+    margin-top: 0px;
+    height: 175px
+}
+
+.player-head {
+    background-color: #80deea;
+    box-shadow: 0px 0px 6px grey;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.player-table {
+    border-style: hidden;
+    box-shadow: 0px 4px 6px grey;
+    margin-top: 0px;
+    height: 165px
+}
+
+#player_Health_Bar {
+    border-style: solid;
+    color: black;
+    height: 25px;
+    margin-left: 10px;
+}
+
+#player_Health_Bar_Color {
+    color: black;
+    background-color: green;
+    height: 19px;
+}
+
+#player_Armour_Bar {
+    border-style: solid;
+    color: black;
+    height: 25px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+#player_Armour_Bar_Color {
+    color: black;
+    background-color: grey;
+}
+
+#player_Money {
+    height: 25px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+#player_Money_Display {
+    height: 25px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+#informant {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 155px
+}

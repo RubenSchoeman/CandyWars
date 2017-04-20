@@ -1,0 +1,50 @@
+.shop-head {
+    background-color: #26c6da;
+    box-shadow: 0px 0px 6px grey;
+    margin-top: 50px;
+}
+
+.shop-table {
+    border-style: hidden;
+    box-shadow: 0px 4px 6px grey;
+    margin-top: 0px;
+    height: 400px
+}
+
+.shop-weapon-head {
+    background-color: #80deea;
+    box-shadow: 0px 0px 6px grey;
+    margin-top: 5px;
+}
+
+.shop-weapon-table {
+    border-style: hidden;
+    box-shadow: 0px 4px 6px grey;
+    margin-top: 0px;
+    height: 175px
+}
+
+.shop-items-head {
+    background-color: #80deea;
+    box-shadow: 0px 0px 6px grey;
+    margin-top: 5px;
+}
+
+.shop-items-table {
+    border-style: hidden;
+    box-shadow: 0px 4px 6px grey;
+    margin-top: 0px;
+    height: 175px
+}
+
+#shop_Weapons {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 155px
+}
+
+#shop_Items {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 155px
+}

@@ -1,0 +1,105 @@
+.action-head {
+    background-color: #26c6da;
+    box-shadow: 0px 0px 6px grey;
+    margin-top: 50px;
+}
+
+.action-table {
+    border-style: hidden;
+    box-shadow: 0px 4px 6px grey;
+    margin-top: 0px;
+    height: 0px
+}
+
+.fight-head {
+    background-color: #80deea;
+    box-shadow: 0px 0px 6px grey;
+    margin-top: 5px;
+}
+
+.fight-table {
+    border-style: hidden;
+    box-shadow: 0px 4px 6px grey;
+    margin-top: 0px;
+    height: 200px
+}
+
+.fight-results-head {
+    background-color: #80deea;
+    box-shadow: 0px 0px 6px grey;
+    margin-top: 5px;
+}
+
+.fight-results-table {
+    border-style: hidden;
+    box-shadow: 0px 4px 6px grey;
+    margin-top: 0px;
+    height: 118px
+}
+
+.backpack-head {
+    background-color: #80deea;
+    box-shadow: 0px 0px 6px grey;
+    margin-top: 5px;
+}
+
+.backpack-table {
+    border-style: hidden;
+    box-shadow: 0px 4px 6px grey;
+    margin-top: 0px;
+    height: 0px
+}
+
+.weapons-head {
+    background-color: #80deea;
+    box-shadow: 0px 0px 6px grey;
+    margin-top: 5px;
+}
+
+.weapons-table {
+    border-style: hidden;
+    box-shadow: 0px 4px 6px grey;
+    margin-top: 0px;
+    height: 152px;
+}
+
+.items-head {
+    background-color: #80deea;
+    box-shadow: 0px 0px 6px grey;
+    margin-top: 5px;
+}
+
+.items-table {
+    border-style: hidden;
+    box-shadow: 0px 4px 6px grey;
+    margin-top: 0px;
+    height: 152px;
+}
+
+.backpack-products-head {
+    background-color: #80deea;
+    box-shadow: 0px 0px 6px grey;
+    margin-top: 5px;
+}
+
+.backpack-products-table {
+    border-style: hidden;
+    box-shadow: 0px 4px 6px grey;
+    margin-top: 0px;
+    height: 332px;
+}
+
+#weapons_Select {
+    margin-top: 10px;
+    height: 130px
+}
+
+#item_Select {
+    margin-top: 10px;
+    height: 130px
+}
+
+#product_Select {
+    margin-top: 10px;
+    height: 310px
+}
