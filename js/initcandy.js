@@ -15,38 +15,38 @@ function InitCandy(name) {
     switch (name) {
         case "Atomic balls":
 
-            atomic_Fireballs.setWantedLevel(randomNumber());
-            atomic_Fireballs.setCandyManufacturingDiff(randomNumber());
+            atomicFireballs.setWantedLevel(randomNumber());
+            atomicFireballs.setCandyManufacturingDiff(randomNumber());
             break;
 
         case "Candy Cigs":
 
-            candy_Cigarettes.setWantedLevel(randomNumber());
-            candy_Cigarettes.setCandyManufacturingDiff(randomNumber());
+            candyCigarettes.setWantedLevel(randomNumber());
+            candyCigarettes.setCandyManufacturingDiff(randomNumber());
             break;
 
         case "Cotton Candy":
 
-            cotton_Candy.setWantedLevel(randomNumber());
-            cotton_Candy.setCandyManufacturingDiff(randomNumber());
+            cottonCandy.setWantedLevel(randomNumber());
+            cottonCandy.setCandyManufacturingDiff(randomNumber());
             break;
 
         case "Gummi Bears":
 
-            gummi_Bears.setWantedLevel(randomNumber());
-            gummi_Bears.setCandyManufacturingDiff(randomNumber());
+            gummiBears.setWantedLevel(randomNumber());
+            gummiBears.setCandyManufacturingDiff(randomNumber());
             break;
 
         case "Lollipop":
 
-            lolli_Pop.setWantedLevel(randomNumber());
-            lolli_Pop.setCandyManufacturingDiff(randomNumber());
+            lolliPop.setWantedLevel(randomNumber());
+            lolliPop.setCandyManufacturingDiff(randomNumber());
             break;
 
         case "Milk Duds":
 
-            milk_Duds.setWantedLevel(randomNumber());
-            milk_Duds.setCandyManufacturingDiff(randomNumber());
+            milkDuds.setWantedLevel(randomNumber());
+            milkDuds.setCandyManufacturingDiff(randomNumber());
             break;
 
         case "M&Ms":
@@ -57,20 +57,20 @@ function InitCandy(name) {
 
         case "Jaw Breaker":
 
-            jaw_Breaker.setWantedLevel(randomNumber());
-            jaw_Breaker.setCandyManufacturingDiff(randomNumber());
+            jawBreaker.setWantedLevel(randomNumber());
+            jawBreaker.setCandyManufacturingDiff(randomNumber());
             break;
 
         case "Kit-Kat":
 
-            kit_Kat.setWantedLevel(randomNumber());
-            kit_Kat.setCandyManufacturingDiff(randomNumber());
+            kitKat.setWantedLevel(randomNumber());
+            kitKat.setCandyManufacturingDiff(randomNumber());
             break;
 
         case "Pop Rocks":
 
-            pop_Rocks.setWantedLevel(randomNumber());
-            pop_Rocks.setCandyManufacturingDiff(randomNumber());
+            popRocks.setWantedLevel(randomNumber());
+            popRocks.setCandyManufacturingDiff(randomNumber());
             break;
 
         case "Peeps":
@@ -99,8 +99,8 @@ function InitCandy(name) {
 
         case "Tootsie Roll":
 
-            tootsie_Rolls.setWantedLevel(randomNumber());
-            tootsie_Rolls.setCandyManufacturingDiff(randomNumber());
+            tootsieRolls.setWantedLevel(randomNumber());
+            tootsieRolls.setCandyManufacturingDiff(randomNumber());
             break;
 
         default:

@@ -1,7 +1,7 @@
 function BuySellProducts() {
     var _buysellproducts = this;
     var counter = 0;
-    var backpack_Products = [];
+    var backpack_products = [];
     var product_Val_Key = $('#products_Select :selected').val();
     var current_Location = null;
     var player_Money = 1000;// make this number call a setvalue in  a difficulty class
@@ -13,7 +13,7 @@ function BuySellProducts() {
             a = player.getPlayerLocation();
             b = player.getPlayerMoney();
             c = _buysellproducts.getProductKey();
-            backpack_Products = [];
+            backpack_products = [];
 
             buysellproducts.promptPlayer(function(d) {
                 var stock_Price = _buysellproducts.getProductStockPrice(a, c);
@@ -31,8 +31,8 @@ function BuySellProducts() {
     };
 
     this.createBackpackList = function(current_Location, product_Val_Key, product_Ammount, counter) {
-        backpack_Products.push('<option>' + citiesArray[current_Location].getStockArrayName(product_Val_Key) + ":" + product_Ammount + '</option>');
-        $('#product' + counter).html(backpack_Products.join('\n'));
+        backpack_products.push('<option>' + citiesArray[current_Location].getStockArrayName(product_Val_Key) + ":" + product_Ammount + '</option>');
+        $('#product' + counter).html(backpack_products.join('\n'));
         counter = counter + 1;
     };
 

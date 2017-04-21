@@ -1,26 +1,26 @@
 var candyArray = {
-    0: atomic_Fireballs = new Candy(),
-    1: candy_Cigarettes = new Candy(),
-    2: cotton_Candy = new Candy(),
-    3: gummi_Bears = new Candy(),
-    4: lolli_Pop = new Candy(),
-    5: milk_Duds = new Candy(),
+    0: atomicFireballs = new Candy(),
+    1: candyCigarettes = new Candy(),
+    2: cottonCandy = new Candy(),
+    3: gummiBears = new Candy(),
+    4: lolliPop = new Candy(),
+    5: milkDuds = new Candy(),
     6: MMs = new Candy(),
-    7: jaw_Breaker = new Candy(),
-    8: kit_Kat = new Candy(),
-    9: pop_Rocks = new Candy(),
+    7: jawBreaker = new Candy(),
+    8: kitKat = new Candy(),
+    9: popRocks = new Candy(),
     10: peeps = new Candy(),
     11: skittles = new Candy(),
     12: smarties = new Candy(),
     13: starburst = new Candy(),
-    14: tootsie_Rolls = new Candy()
+    14: tootsieRolls = new Candy()
 };
 
 var engine = new Engine();
 var informant = new Informant();
 var economy = new Economy();
 var player = new Player();
-var buysellproducts = new BuySellProducts();
+var buysell = new BuySell();
 
 var citiesArray = {
     0: canberra = new Location("Australia", engine),
@@ -63,7 +63,7 @@ engine.initCandyNames();
 
 engine.initCityManufactures();
 
-buysellproducts.buyCityProduct(function(location) {
+buysell.buyCityProduct(function(location) {
     economy.updateEconomy(location);
 });
 
