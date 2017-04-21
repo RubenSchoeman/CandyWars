@@ -2,7 +2,7 @@ function Engine(){
     var _engine = this;
     var stay = null;
 
-    var candy_Type = [
+    var candy_type = [
         "Atomic balls",
         "Candy Cigs",
         "Cotton Candy",
@@ -21,8 +21,8 @@ function Engine(){
     ];
 
     this.initCityManufactures = function(){
-        for(var key in candy_Type){
-            InitCandy(candy_Type[key]);
+        for(var key in candy_type){
+            InitCandy(candy_type[key]);
         }
     };
 
@@ -42,18 +42,17 @@ function Engine(){
     };
 
     this.getCandyType = function(index) {
-        return candy_Type[index];
+        return candy_type[index];
     };
 
     this.getCandy = function() {
-        return candy_Type;
+        return candy_type;
     };
 
     this.manageNpc = function() {
         for(var key in npcArray) {
             npcArray[key].buyCheapStock();
             npcArray[key].npcTravel();
-            //console.log(npcArray[key].getName() + " is in " + npcArray[key].getLocation() + " with " + npcArray[key].getProducts());
             npcArray[key].sellProducts();
         }
     };
@@ -65,57 +64,7 @@ function Engine(){
         }
     };
 
-    this.flyTo = function(callback) {
-        $('#flyTo').on('click', function(event) {
-            event.preventDefault();
-            var e = document.getElementById("travel_To");
-            var strUser = e.options[e.selectedIndex].text;
-            var location = $('#travel_To :selected').val();
 
-
-            if(location !== stay) {
-                $('#current_location').html(strUser);
-
-                _engine.manageNpc();
-
-                _engine.manageCity();
-
-                //citiesArray[location].stockUpProducts();
-                citiesArray[location].checkStock();
-
-                informant.messages();
-
-                player.setPlayerLocation(location);
-            }
-
-            callback(location);
-            //$('#test').html('<div id="player_Health_Bar_Color" class="col-xs-' + player.getPlayerDisplayHealth(player.getPlayerHealth()) + '">' + player.getHealthText() + '</div>');
-            //player.setPlayerHealth(8);
-            //if(player.getHealthText() === "You be DEAD!!!") {
-            //    $('#player_Health_Bar_Color').css('background-color', 'red');
-            //}
-
-            stay = location;
-        });
-    };
-
-    this.stay = function() {
-        $('#stay').on('click', function(event) {
-            event.preventDefault();
-
-            _engine.manageNpc();
-
-            _engine.manageCity();
-
-            citiesArray[stay].stockUpProducts();
-            citiesArray[stay].checkStock();
-
-            economy.lowStockPrice();
-
-            informant.messages();
-
-        });
-    };
 
 
 }

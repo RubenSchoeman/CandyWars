@@ -105,9 +105,9 @@ function Location(Location_name, engine) {
         }
     };
 
-    this.setManufactures = function(candy_Type) {
+    this.setManufactures = function(candy_type) {
 
-        manufactures = candy_Type;
+        manufactures = candy_type;
         InitCandy(manufactures);
 
     };

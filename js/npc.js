@@ -34,6 +34,7 @@ function NPC(npc_Name, local) {
 
         buy_Ammount =  Math.floor(most_Units_Ammount / 2);
         citiesArray[location_Key].buyStock(units_Key, buy_Ammount);
+        //add stockUpProducts function
         products.push(citiesArray[location_Key].getStockArrayName(units_Key), buy_Ammount);
     };
 
@@ -62,6 +63,7 @@ function NPC(npc_Name, local) {
         }
 
         citiesArray[travel_To_Key].sellStock(new_Units_Key, products[1]);
+        //add stockUpProducts function.
         products = [];
     };
 

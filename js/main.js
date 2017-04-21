@@ -21,6 +21,7 @@ var informant = new Informant();
 var economy = new Economy();
 var player = new Player();
 var buysell = new BuySell();
+var travel = new Travel();
 
 var citiesArray = {
     0: canberra = new Location("Australia", engine),
@@ -67,11 +68,11 @@ buysell.buyCityProduct(function(location) {
     economy.updateEconomy(location);
 });
 
-engine.flyTo(function(location) {
+travel.flyTo(function(location) {
     economy.updateEconomy(location);
 });
 
-engine.stay();
+travel.stay();
 
 //engine.buyCityProduct();
 
