@@ -2,62 +2,62 @@ function BuySell() {
     var _buysell = this;
     var counter = 0;
     var backpack_products = [];
-    var product_Val_Key = $('#products_Select :selected').val();
-    var current_Location = null;
-    var player_Money = 1000;// make this number call a setvalue in  a difficulty class
+    var product_val_key = $('#products_Select :selected').val();
+    var current_location = null;
+    var player_money = 1000;// make this number call a setvalue in  a difficulty class
 
     this.buyCityProduct = function(callback) {
         $('#product_Buy_Btn').on('click', function(event) {
             event.preventDefault();
 
-            current_Location = player.getPlayerLocation();
-            player_Money = player.getPlayerMoney();
-            product_Val_Key = _buysell.getProductKey();
+            current_location = player.getPlayerLocation();
+            player_money = player.getPlayerMoney();
+            product_val_key = _buysell.getProductKey();
             backpack_products = [];
 
-            buysell.promptPlayer(function(product_Ammount) {
-                var stock_Price = _buysell.getProductStockPrice(current_Location, product_Val_Key);
+            buysell.promptPlayer(function(productAmmount) {
+                var stock_Price = _buysell.getProductStockPrice(current_location, product_val_key);
 
-                if (_buysell.continueTransaction(product_Ammount, current_Location, product_Val_Key)) {
-                    _buysell.createBackpackList(current_Location, product_Val_Key, product_Ammount, counter);
-                    _buysell.deductMoney(player_Money, stock_Price, product_Ammount);
-                    _buysell.updateCityStock(current_Location, product_Val_Key, product_Ammount);
-                    _buysell.displayPlayerMoney(player_Money);
-                    player.setPlayerMoney(player_Money);
+                if (_buysell.continueTransaction(productAmmount, current_location, product_val_key)) {
+                    _buysell.createBackpackList(current_location, product_val_key, productAmmount, counter);
+                    _buysell.deductMoney(player_money, stock_Price, productAmmount);
+                    _buysell.updateCityStock(current_location, product_val_key, productAmmount);
+                    _buysell.displayPlayerMoney(player_money);
+                    player.setPlayerMoney(player_money);
                 }
 
             });
-            callback(current_Location);
+            callback(current_location);
         });
     };
 
-    this.createBackpackList = function(city, key, amount, i) {
-        backpack_products.push('<option>' + citiesArray[city].getStockArrayName(key) + ":" + amount + '</option>');
+    this.createBackpackList = function(current_location, product_val_key, productAmmount, i) {
+        backpack_products.push('<option>' + citiesArray[current_location].getStockArrayName(product_val_key) + ":" + productAmmount + '</option>');
         $('#product' + i).html(backpack_products.join('\n'));
         counter = i + 1;
     };
 
-    this.continueTransaction = function(amount, city, value) {
-        if (amount < citiesArray[city].getStockAmount(value)) {
+    this.continueTransaction = function(productAmmount, current_location, product_val_key) {
+        if (productAmmount < citiesArray[current_location].getStockAmount(product_val_key)) {
             return true;
         }
     };
 
     this.promptPlayer = function(callback) {
-        var product_Ammount = prompt("Please select amount", 0);
-        callback(product_Ammount);
+        var productAmmount = prompt("Please select amount", 0);
+        callback(productAmmount);
     };
 
-    this.deductMoney = function(money, price, amount) {
-        player_Money = money - (price * amount);
+    this.deductMoney = function(money, price, productAmmount) {
+        player_money = money - (price * productAmmount);
     };
 
     this.displayPlayerMoney = function(money) {
-        $('#player_Money_Display').html(money);
+        $('#player_money_Display').html(money);
     };
 
-    this.getProductStockPrice = function(city, key) {
-        var price = citiesArray[city].getStockPrice(key);
+    this.getProductStockPrice = function(current_location, product_val_key) {
+        var price = citiesArray[current_location].getStockPrice(product_val_key);
         return price;
     };
 
@@ -65,8 +65,8 @@ function BuySell() {
         return $('#products_Select :selected').val();
     };
 
-    this.updateCityStock = function(city, key, amount) {
-        citiesArray[city].buyStock(key, amount);
-        citiesArray[city].stockUpProducts();
+    this.updateCityStock = function(current_location, product_val_key, productAmmount) {
+        citiesArray[current_location].buyStock(product_val_key, productAmmount);
+        citiesArray[current_location].stockUpProducts();
     };
 }
