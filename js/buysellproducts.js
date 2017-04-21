@@ -53,7 +53,7 @@ function BuySell() {
     };
 
     this.displayPlayerMoney = function(money) {
-        $('#player_money_Display').html(money);
+        $('#player_Money_Display').html(money);
     };
 
     this.getProductStockPrice = function(current_location, product_val_key) {

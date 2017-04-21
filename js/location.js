@@ -1,11 +1,7 @@
-function Location(Location_name, engine) {
+function Location(location_name, engine) {
     var _location = this;
-    var name = Location_name;
+    var name = location_name;
     var manufactures = "";
-    var manufactures_Key = null;
-    var manufactured_Price = 0;
-    var cityManufacture = "";
-    var array_Comp = false;
 
 
     var stock = {
@@ -80,7 +76,6 @@ function Location(Location_name, engine) {
         }
         $('#informant').html(html.join('\n'));
         return html;
-
     };
 
     this.checkStock = function() {
@@ -106,24 +101,21 @@ function Location(Location_name, engine) {
     };
 
     this.setManufactures = function(candy_type) {
-
         manufactures = candy_type;
         InitCandy(manufactures);
-
     };
 
     this.consumeStock = function() {
         var key = 0;
 
         for(key in stock) {
-            var item_Name = stock[key][0];
-            var item_Amount = stock[key][1];
-            var minus = candyArray[key].getWantedLevel();
+            var item_amount = stock[key][1];
+            var wanted_level = engine.getCandyWantedLevel(key);
 
-            if(item_Amount !== 0){
-                stock[key][1] = item_Amount - candyArray[key].getWantedLevel();
+            if(item_amount !== 0){
+                stock[key][1] = item_amount - wanted_level;
             }
-            if (item_Amount < 0) {
+            if (item_amount < 0) {
                 stock[key][1] = 0;
             }
         }

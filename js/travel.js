@@ -4,20 +4,20 @@ function Travel() {
     this.flyTo = function(callback) {
         $('#flyTo').on('click', function(event) {
             event.preventDefault();
-            var e = document.getElementById("travel_To");
-            var strUser = e.options[e.selectedIndex].text;
+            var locationString = engine.getSelectedTravelToValue();
             var location = $('#travel_To :selected').val();
 
 
             if(location !== stay) {
-                $('#current_location').html(strUser);
+                $('#current_location').html(locationString);
 
                 engine.manageNpc();
 
                 engine.manageCity();
 
-                //citiesArray[location].stockUpProducts();
-                citiesArray[location].checkStock();
+                engine.stockUpCityProducts(location);
+
+                engine.checkCityStock(location);
 
                 informant.messages();
 
@@ -35,7 +35,7 @@ function Travel() {
         });
     };
 
-    this.stay = function() {
+    this.stay = function(callback) {
         $('#stay').on('click', function(event) {
             event.preventDefault();
 
@@ -43,11 +43,13 @@ function Travel() {
 
             engine.manageCity();
 
-            citiesArray[stay].stockUpProducts();
-            citiesArray[stay].checkStock();
+            engine.stockUpCityProducts(stay);
+
+            engine.checkCityStock(stay);
 
             informant.messages();
 
         });
+        callback(stay);
     };
 }

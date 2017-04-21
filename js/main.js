@@ -72,7 +72,9 @@ travel.flyTo(function(location) {
     economy.updateEconomy(location);
 });
 
-travel.stay();
+travel.stay(function(location) {
+    economy.updateEconomy(location);
+});
 
 //engine.buyCityProduct();
 

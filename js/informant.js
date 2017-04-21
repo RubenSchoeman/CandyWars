@@ -1,6 +1,5 @@
 function Informant(){
 
-
     this.messages = function() {
 
         var html = [];

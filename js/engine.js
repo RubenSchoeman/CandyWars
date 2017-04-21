@@ -37,6 +37,24 @@ function Engine(){
         return temp;
     };
 
+    this.stockUpCityProducts = function(location) {
+        citiesArray[location].stockUpProducts();
+    };
+
+    this.checkCityStock = function(location) {
+        citiesArray[location].checkStock();
+    };
+
+    this.updateCityLowStock = function(key) {
+        citiesArray[key].getLowStock();
+    };
+
+    this.getSelectedTravelToValue = function() {
+        var e = document.getElementById("travel_To");
+        var strUser = e.options[e.selectedIndex].text;
+        return strUser;
+    };
+
     this.getRandomInt = function(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     };
@@ -47,6 +65,10 @@ function Engine(){
 
     this.getCandy = function() {
         return candy_type;
+    };
+
+    this.getCandyWantedLevel = function(key) {
+        return candyArray[key].getWantedLevel();
     };
 
     this.manageNpc = function() {
