@@ -17,6 +17,8 @@ function Travel() {
 
                 engine.stockUpCityProducts(location);
 
+                economy.updateEconomy(location);
+
                 engine.checkCityStock(location);
 
                 informant.messages();
@@ -30,7 +32,7 @@ function Travel() {
             //if(player.getHealthText() === "You be DEAD!!!") {
             //    $('#player_Health_Bar_Color').css('background-color', 'red');
             //}
-
+            //console.log(location);
             stay = location;
         });
     };
@@ -43,7 +45,7 @@ function Travel() {
 
             engine.manageCity();
 
-            engine.stockUpCityProducts(stay);
+            economy.updateEconomy(stay);
 
             engine.checkCityStock(stay);
 

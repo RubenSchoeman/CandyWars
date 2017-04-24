@@ -1,3 +1,7 @@
+/*
+*   15 candy instances is created in main.js
+*   each with unique name, key and other values
+*/
 function Candy(){
 
     var name = "";

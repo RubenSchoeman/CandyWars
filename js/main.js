@@ -1,3 +1,10 @@
+var engine = new Engine();
+var informant = new Informant();
+var economy = new Economy();
+var player = new Player();
+var buysell = new BuySell();
+var travel = new Travel();
+
 var candyArray = {
     0: atomicFireballs = new Candy(),
     1: candyCigarettes = new Candy(),
@@ -15,13 +22,6 @@ var candyArray = {
     13: starburst = new Candy(),
     14: tootsieRolls = new Candy()
 };
-
-var engine = new Engine();
-var informant = new Informant();
-var economy = new Economy();
-var player = new Player();
-var buysell = new BuySell();
-var travel = new Travel();
 
 var citiesArray = {
     0: canberra = new Location("Australia", engine),
@@ -60,40 +60,23 @@ var npcArray = {
 };
 
 
+
 engine.initCandyNames();
 
-engine.initCityManufactures();
+engine.initCandyType();
 
 buysell.buyCityProduct(function(location) {
     economy.updateEconomy(location);
 });
 
-travel.flyTo(function(location) {
+buysell.sellCityProducts(function(location) {
     economy.updateEconomy(location);
+});
+
+travel.flyTo(function(location) {
+    engine.stockUpCityProducts(location);
 });
 
 travel.stay(function(location) {
-    economy.updateEconomy(location);
+    engine.stockUpCityProducts(location);
 });
-
-//engine.buyCityProduct();
-
-
-//$('#test').html('<div class="col-xs-' + 12 + '" id="player_Health_Bar_Color"> Player Health </div>');
-//console.log(engine.getCandy().indexOf("Smarties"));
-
-
-
-
-/*
-
-var is_Random_Array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-
-function spliceArray(index) {
-    is_Random_Array.splice(index, 1);
-}
-
-function getRandomArray() {
-    return is_Random_Array;
-}
-*/

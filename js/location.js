@@ -61,7 +61,15 @@ function Location(location_name, engine) {
     this.stockUpProducts = function() {
         var key = 0;
         for(key in stock) {
-            $('#Candy' + key).html(stock[key][0] + ":" + " amount: " + stock[key][1] + " price: " + stock[key][2]);
+            var candy = stock[key][0];
+            var amount = stock[key][1];
+            var price = stock[key][2];
+
+            if ( amount < 0) {
+                amount = 0;
+            }
+
+            $('#Candy' + key).html(candy + ":" + " amount: " + amount + " price: " + price);
         }
     };
 
@@ -80,15 +88,28 @@ function Location(location_name, engine) {
 
     this.checkStock = function() {
 
-        var check_Stock = [];
+        var check_stock = [];
 
         for(var key in stock){
 
             if (stock[key][1] < 20) {
-                check_Stock.push('<option>' + stock[key][0] + ":"  + "     price: " + stock[key][2] + '</option>');
+                check_stock.push('<option>' + stock[key][0] + ":"  + "     price: " + stock[key][2] + '</option>');
             }
         }
-        $('#products_Wanted').html(check_Stock.join('\n'));
+        $('#products_Wanted').html(check_stock.join('\n'));
+    };
+
+    this.makeLowStockArray = function() {
+        var low_stock = [];
+
+        for(var key in stock){
+
+            if (stock[key][1] < 20) {
+                low_stock.push(stock[key][0],stock[key][1], stock[key][2]);
+            }
+        }
+
+        return low_stock;
     };
 
     this.replaceStock = function() {

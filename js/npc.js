@@ -1,69 +1,69 @@
-function NPC(npc_Name, local) {
-    var name = npc_Name;
+function NPC(npc_name, local) {
+    var name = npc_name;
     var health = 100;
     var speed = 1;
     var level = 1;
     var weapon = "Bare Fist";
-    var current_Location = local;
-    var new_Units_Key = 0;
-    var travel_To_Key = 0;
-    var units_Key = 0;
+    var current_location = local;
+    var new_units_key = 0;
+    var travel_to_key = 0;
+    var units_key = 0;
     var products = [];
-    var location_Key = null;
+    var location_key = null;
 
     this.buyCheapStock = function() {
-        var products_Ammount = 0;
-        var most_Units_Ammount = 0;
-        var buy_Ammount = 0;
+        var products_ammount = 0;
+        var most_units_ammount = 0;
+        var buy_ammount = 0;
 
         for(var i = 0; i < 15; i++) {
             var city = citiesArray[i].getName();
-            if (city === current_Location) {
-                location_Key = i;
+            if (city === current_location) {
+                location_key = i;
             }
         }
 
         for(var j = 0; j < 15; j++) {
-            products_Ammount = citiesArray[location_Key].getStockAmount(j);
+            products_ammount = citiesArray[location_key].getStockAmount(j);
 
-            if(products_Ammount > most_Units_Ammount) {
-                most_Units_Ammount = products_Ammount;
-                units_Key = j;
+            if(products_ammount > most_units_ammount) {
+                most_units_ammount = products_ammount;
+                units_key = j;
             }
         }
 
-        buy_Ammount =  Math.floor(most_Units_Ammount / 2);
-        citiesArray[location_Key].buyStock(units_Key, buy_Ammount);
-        //add stockUpProducts function
-        products.push(citiesArray[location_Key].getStockArrayName(units_Key), buy_Ammount);
+        buy_ammount =  Math.floor(most_units_ammount / 2);
+        citiesArray[location_key].buyStock(units_key, buy_ammount);
+        engine.stockUpCityProducts(location_key);
+        products.push(citiesArray[location_key].getStockArrayName(units_key), buy_ammount);
     };
 
     this.npcTravel = function() {
-        var products_Ammount = 0;
-        var least_Units = citiesArray[0].getStockAmount(units_Key);
+        var products_ammount = 0;
+        var least_Units = citiesArray[0].getStockAmount(units_key);
         var sell_Ammount = 0;
 
         for(var key in citiesArray) {
-            products_Ammount = citiesArray[key].getStockAmount(units_Key);
+            products_ammount = citiesArray[key].getStockAmount(units_key);
 
-            if(products_Ammount < least_Units) {
-                least_Units = products_Ammount;
-                travel_To_Key = key;
+            if(products_ammount < least_Units) {
+                least_Units = products_ammount;
+                travel_to_key = key;
             }
         }
-        current_Location = citiesArray[travel_To_Key].getName();
+        current_location = citiesArray[travel_to_key].getName();
     };
 
     this.sellProducts = function() {
 
         for (var i = 0; i < 15; i++) {
-            if (citiesArray[travel_To_Key].getStockArrayName(i) === products[0]) {
-                new_Units_Key = i;
+            if (citiesArray[travel_to_key].getStockArrayName(i) === products[0]) {
+                new_units_key = i;
             }
         }
 
-        citiesArray[travel_To_Key].sellStock(new_Units_Key, products[1]);
-        //add stockUpProducts function.
+        citiesArray[travel_to_key].sellStock(new_units_key, products[1]);
+        engine.stockUpCityProducts(travel_to_key);
         products = [];
     };
 
@@ -72,7 +72,7 @@ function NPC(npc_Name, local) {
     };
 
     this.getLocation = function() {
-        return  current_Location;
+        return  current_location;
     };
 
     this.getName = function() {

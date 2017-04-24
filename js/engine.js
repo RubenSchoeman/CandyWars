@@ -1,6 +1,6 @@
 function Engine(){
     var _engine = this;
-    var stay = null;
+    var location = 0;
 
     var candy_type = [
         "Atomic balls",
@@ -20,7 +20,7 @@ function Engine(){
         "Tootsie Roll",
     ];
 
-    this.initCityManufactures = function(){
+    this.initCandyType = function(){
         for(var key in candy_type){
             InitCandy(candy_type[key]);
         }
