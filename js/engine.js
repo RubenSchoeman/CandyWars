@@ -32,6 +32,17 @@ function Engine(){
         }
     };
 
+    this.getCandyKey = function(string) {
+        var array_key = 0;
+        var name = candy_type[array_key];
+
+        while(name !== string) {
+            array_key += 1;
+            name = candy_type[array_key];            
+        }
+        return array_key;
+    };
+
     this.randomHundred = function() {
         var temp = Math.ceil(Math.random() * 100 + 1);
         return temp;
