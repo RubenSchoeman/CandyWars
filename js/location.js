@@ -2,6 +2,7 @@ function Location(location_name, engine) {
     var _location = this;
     var name = location_name;
     var manufactures = "";
+    var rooms = [];
 
 
     var stock = {
@@ -20,6 +21,24 @@ function Location(location_name, engine) {
         12: ["Smarties", engine.randomHundred(), engine.getRandomInt(5, 100)],
         13: ["Starburst", engine.randomHundred(), engine.getRandomInt(5, 100)],
         14: ["Tootsie Roll", engine.randomHundred(), engine.getRandomInt(5, 100)]
+    };
+
+    this.getRooms = function() {
+        return rooms;
+    };
+
+    this.setRooms = function(encounter_name) {
+        rooms.push(encounter_name);
+    };
+
+    this.removeFromRoom = function(encounter_name) {
+        for(var key in rooms){
+            if (rooms[key] === encounter_name) {
+                rooms.splice(key, 1);
+            }
+        }
+        //console.log(rooms);
+        //console.log(name);
     };
 
     this.getName = function() {

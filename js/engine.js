@@ -1,6 +1,7 @@
 function Engine(){
     var _engine = this;
     var location = 0;
+    var day_counter = 0;
 
     var candy_type = [
         "Atomic balls",
@@ -20,6 +21,10 @@ function Engine(){
         "Tootsie Roll",
     ];
 
+    this.countDay = function() {
+        day_counter += 1;
+    };
+
     this.initCandyType = function(){
         for(var key in candy_type){
             InitCandy(candy_type[key]);
@@ -38,7 +43,7 @@ function Engine(){
 
         while(name !== string) {
             array_key += 1;
-            name = candy_type[array_key];            
+            name = candy_type[array_key];
         }
         return array_key;
     };

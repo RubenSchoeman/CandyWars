@@ -9,12 +9,14 @@ function NPC(npc_name, local) {
     var travel_to_key = 0;
     var units_key = 0;
     var products = [];
-    var location_key = null;
+    var location_key = 0;
+    var previous_location = 0;
 
     this.buyCheapStock = function() {
         var products_ammount = 0;
         var most_units_ammount = 0;
         var buy_ammount = 0;
+        previous_location = location_key;
 
         for(var i = 0; i < 15; i++) {
             var city = citiesArray[i].getName();
@@ -22,6 +24,10 @@ function NPC(npc_name, local) {
                 location_key = i;
             }
         }
+
+        citiesArray[location_key].setRooms(name);
+
+        citiesArray[previous_location].removeFromRoom(name);
 
         for(var j = 0; j < 15; j++) {
             products_ammount = citiesArray[location_key].getStockAmount(j);
@@ -61,7 +67,7 @@ function NPC(npc_name, local) {
                 new_units_key = i;
             }
         }
-
+        
         citiesArray[travel_to_key].sellStock(new_units_key, products[1]);
         engine.stockUpCityProducts(travel_to_key);
         products = [];

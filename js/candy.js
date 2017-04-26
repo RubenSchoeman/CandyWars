@@ -3,7 +3,6 @@
 *   each with unique name, key and other values
 */
 function Candy(){
-
     var name = "";
     var wanted_level = null; // 10 very wanted
     var manufacture_difficulty = null; // 10 very difficult

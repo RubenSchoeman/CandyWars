@@ -41,7 +41,7 @@ function BuySell() {
                 if (_buysell.continueTransaction(productAmmount, current_location, product_val_key)) {
                     _buysell.createBackpackList(current_location, product_val_key, productAmmount, counter, stock_Price);
                     _buysell.deductMoney(player_money, stock_Price, productAmmount);
-                    _buysell.updateCityStock(current_location, product_val_key, productAmmount);
+                    _buysell.buyCityStock(current_location, product_val_key, productAmmount);
                     _buysell.displayPlayerMoney(player_money);
                     player.setPlayerMoney(player_money);
                 }
@@ -54,23 +54,13 @@ function BuySell() {
     this.sellCityProducts = function(callback) {
         $('#product_Sell_Btn').on('click', function(event) {
             event.preventDefault();
+
             current_location = player.getPlayerLocation();
             player_money = player.getPlayerMoney();
             product_wanted_string = _buysell.getProductWantedString();
             needed_stock = citiesArray[current_location].makeLowStockArray();
-            var string = "";
-            var i = 0;
-            var char = product_wanted_string[0];
-            var name_String =  "";
-            var have_Amount = 0;
-            var backpack_key = 0;
 
-            while(char !== ":"){
-                string = string + char;
-                i = i + 1;
-                char = product_wanted_string[i];
-            }
-
+            var string = _buysell.createString(product_wanted_string);
             var product_wanted_key = engine.getCandyKey(string);
             var stock_Price = _buysell.getProductStockPrice(current_location, product_wanted_key);
 
@@ -83,17 +73,16 @@ function BuySell() {
                     if(string === name_String && have_Amount >= sell_Ammount) {
                         have_Amount =  have_Amount - sell_Ammount;
                         player_money = player_money + (sell_Ammount * stock_Price);
+
+                        _buysell.removeAmountFromBackpack(backpack_use, string, sell_Ammount);
+                        _buysell.sellCityStock(current_location, product_wanted_key, sell_Ammount);
                         _buysell.displayPlayerMoney(player_money);
                         player.setPlayerMoney(player_money);
-                        console.log(backpack_use);
+
                         if (have_Amount === 0) {
                             backpack_key = _buysell.removeFromBackpackList(backpack_use, string);
                             backpack_use.splice(backpack_key, 1);
-                            console.log(backpack_use);
-                            $('#results_table').html("you have sold something");
-                        } else {
-
-                            console.log("return false");
+                            $('#results_table').html("You have sold all your " + string);
                         }
                     } else {
                         $('#results_table').html("You do not have that amount or this city does not need the item");
@@ -118,7 +107,6 @@ function BuySell() {
 
         for (var unit in backpack_use) {
             if(string !== backpack_use[unit][0]) {
-                //new_backpack.push('<option>' + backpack_use[unit][0] + ":" + backpack_use[unit][1] + '</option>');
                 $('#product' + counter).html('<option>' + backpack_use[unit][0] + ":" + backpack_use[unit][1] + '</option>');
                 counter += 1;
             } else if (string === backpack_use[unit][0]) {
@@ -130,8 +118,39 @@ function BuySell() {
         return backpack_key;
     };
 
+    this.createString = function(product_wanted_string) {
+        string = "";
+        var i = 0;
+        var char = product_wanted_string[0];
+        var name_String =  "";
+        var have_Amount = 0;
+        var backpack_key = 0;
+
+        while(char !== ":"){
+            string = string + char;
+            i = i + 1;
+            char = product_wanted_string[i];
+        }
+        return string;
+    };
+
+    this.removeAmountFromBackpack = function(backpack_use, string, sell_Ammount) {
+        var temp = 0;
+        var backpack_Key = 0;
+
+        for (var unit in backpack_use) {
+            var item_name = backpack_use[unit][0];
+            if(string !== item_name) {
+                temp += 1;
+            } else if (string === item_name) {
+                backpack_Key = temp;
+                backpack_use[backpack_Key][1] -= sell_Ammount;
+            }
+        }
+    };
+
     this.continueTransaction = function(productAmmount, current_location, product_val_key) {
-        if (productAmmount < citiesArray[current_location].getStockAmount(product_val_key) && productAmmount !== 0) {
+        if (productAmmount <= citiesArray[current_location].getStockAmount(product_val_key) && productAmmount !== 0) {
             return true;
         }
     };
@@ -177,8 +196,13 @@ function BuySell() {
         return $('#products_Wanted :selected').val();
     };
 
-    this.updateCityStock = function(current_location, product_val_key, productAmmount) {
+    this.buyCityStock = function(current_location, product_val_key, productAmmount) {
         citiesArray[current_location].buyStock(product_val_key, productAmmount);
+        citiesArray[current_location].stockUpProducts();
+    };
+
+    this.sellCityStock = function(current_location, product_wanted_key, sell_Ammount) {
+        citiesArray[current_location].sellStock(product_wanted_key, parseInt(sell_Ammount));
         citiesArray[current_location].stockUpProducts();
     };
 }

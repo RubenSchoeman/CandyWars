@@ -5,7 +5,6 @@
 
 function Economy() {
 
-
 /**
 *   @param {value} location is an int between 0 and 14 and indicates a city;
 */

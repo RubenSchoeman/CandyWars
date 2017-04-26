@@ -1,4 +1,5 @@
 function Player() {
+    var _player = this;
 
     var player_health = 100;
     var player_armour = 0;
@@ -9,6 +10,15 @@ function Player() {
     var health_Text = "Player Health";
     var armour_Text = "Player Armour";
     var player_Location = 0;
+
+    this.managePlayerHealthBar = function() {
+        $('#test').html('<div id="player_Health_Bar_Color" class="col-xs-' + _player.getPlayerDisplayHealth(_player.getPlayerHealth()) + '">' + _player.getHealthText() + '</div>');
+        //player.setPlayerHealth(8);
+        if(player.getHealthText() === "You be DEAD!!!") {
+            $('#player_Health_Bar_Color').css('background-color', 'red');
+        }
+        //console.log(location);
+    };
 
     this.setPlayerHealth = function(set_health) {
         player_health = player_health - set_health;
@@ -44,6 +54,26 @@ function Player() {
 
     this.getArmourText = function() {
         return armour_Text;
+    };
+
+    this.getPlayerArmour = function() {
+        return player_armour;
+    };
+
+    this.getPlayerDamage = function() {
+        return player_Damage;
+    };
+
+    this.getPlayerSpeed = function() {
+        return player_speed;
+    };
+
+    this.getPlayerMoney = function() {
+        return player_money;
+    };
+
+    this.getPlayerLocation = function() {
+        return player_Location;
     };
 
     this.getPlayerDisplayHealth = function(health) {
@@ -107,25 +137,5 @@ function Player() {
         }
 
         return bar_Health;
-    };
-
-    this.getPlayerArmour = function() {
-        return player_armour;
-    };
-
-    this.getPlayerDamage = function() {
-        return player_Damage;
-    };
-
-    this.getPlayerSpeed = function() {
-        return player_speed;
-    };
-
-    this.getPlayerMoney = function() {
-        return player_money;
-    };
-
-    this.getPlayerLocation = function() {
-        return player_Location;
     };
 }

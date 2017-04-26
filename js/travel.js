@@ -1,15 +1,24 @@
 function Travel() {
     var stay = null;
+    var previous_location = null;
+    var previous_location_counter = 1;
+    var location = 0;
 
     this.flyTo = function(callback) {
         $('#flyTo').on('click', function(event) {
             event.preventDefault();
-            var locationString = engine.getSelectedTravelToValue();
-            var location = $('#travel_To :selected').val();
 
+            previous_location = location;
+            var locationString = engine.getSelectedTravelToValue();
+            location = $('#travel_To :selected').val();
+            engine.countDay();
 
             if(location !== stay) {
                 $('#current_location').html(locationString);
+
+                citiesArray[location].setRooms("Player");
+
+                citiesArray[previous_location].removeFromRoom("Player");
 
                 engine.manageNpc();
 
@@ -27,12 +36,6 @@ function Travel() {
             }
 
             callback(location);
-            //$('#test').html('<div id="player_Health_Bar_Color" class="col-xs-' + player.getPlayerDisplayHealth(player.getPlayerHealth()) + '">' + player.getHealthText() + '</div>');
-            //player.setPlayerHealth(8);
-            //if(player.getHealthText() === "You be DEAD!!!") {
-            //    $('#player_Health_Bar_Color').css('background-color', 'red');
-            //}
-            //console.log(location);
             stay = location;
         });
     };
@@ -40,6 +43,8 @@ function Travel() {
     this.stay = function(callback) {
         $('#stay').on('click', function(event) {
             event.preventDefault();
+
+            engine.countDay();
 
             engine.manageNpc();
 
@@ -50,7 +55,6 @@ function Travel() {
             engine.checkCityStock(stay);
 
             informant.messages();
-
         });
         callback(stay);
     };
