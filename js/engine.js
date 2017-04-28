@@ -25,6 +25,10 @@ function Engine(){
         day_counter += 1;
     };
 
+    this.getDayCounter = function() {
+        return day_counter;
+    };
+
     this.initCandyType = function(){
         for(var key in candy_type){
             InitCandy(candy_type[key]);
@@ -102,7 +106,24 @@ function Engine(){
         }
     };
 
+    this.initTravelCost = function() {
+        for(var location in citiesArray){
+            citiesArray[location].createTravelCost();
+            var cost = citiesArray[location].getTravelCost();
+            var loction_string = citiesArray[location].getName() ;
+            $('#loc' + location).html(loction_string + " : " + cost);
+        }
+    };
 
+    this.checkCanTravel = function(location) {
+        var player_money = player.getPlayerMoney();
+        var travel_cost = citiesArray[location].getTravelCost();
 
+        if(player_money >= travel_cost) {
+            return true;
+        } else {
+            return false;
+        }
+    };
 
 }

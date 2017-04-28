@@ -4,7 +4,7 @@ function Player() {
     var player_health = 100;
     var player_armour = 0;
     var player_damage = null;
-    var player_speed = 10;
+    var player_speed = 2;
     var player_money = 1000;
     var bar_Health = 12;
     var health_Text = "Player Health";
@@ -13,11 +13,15 @@ function Player() {
 
     this.managePlayerHealthBar = function() {
         $('#test').html('<div id="player_Health_Bar_Color" class="col-xs-' + _player.getPlayerDisplayHealth(_player.getPlayerHealth()) + '">' + _player.getHealthText() + '</div>');
-        //player.setPlayerHealth(8);
         if(player.getHealthText() === "You be DEAD!!!") {
             $('#player_Health_Bar_Color').css('background-color', 'red');
         }
-        //console.log(location);
+    };
+
+    this.deductTravelCosts = function(location) {
+        var travel_cost = citiesArray[location].getTravelCost();
+        player_money = player_money - travel_cost;
+        $('#player_Money_Display').html(player_money);
     };
 
     this.setPlayerHealth = function(set_health) {

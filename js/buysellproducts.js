@@ -82,10 +82,10 @@ function BuySell() {
                         if (have_Amount === 0) {
                             backpack_key = _buysell.removeFromBackpackList(backpack_use, string);
                             backpack_use.splice(backpack_key, 1);
-                            $('#results_table').html("You have sold all your " + string);
+                            $('#results_table').html("<h3>You have sold all your " + string + "</h3>");
                         }
                     } else {
-                        $('#results_table').html("You do not have that amount or this city does not need the item");
+                        $('#results_table').html("<h3>You do not have that amount or this city does not need the item</h3>");
                     }
                 }
             });

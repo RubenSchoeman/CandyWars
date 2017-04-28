@@ -23,9 +23,7 @@ function Economy() {
                 var price = citiesArray[key].getStockPrice(obj);
 
                 var amount = citiesArray[key].getStockAmount(obj);
-                //console.log(amount);
                 var manDiff = candyArray[obj].getCandyManufacturingDiff();
-                //console.log(manDiff);
                 var wanted =  candyArray[obj].getWantedLevel();
                 if(amount < 20 && price < 2000){
                     price = engine.getRandomInt(5, 1000);
@@ -42,5 +40,3 @@ function Economy() {
         engine.stockUpCityProducts(location);
     };
 }
-//Math.ceil(price * (wanted / 2) * (manDiff / 2))
-//price * wanted * manDiff;

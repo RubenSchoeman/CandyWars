@@ -4,6 +4,8 @@ var economy = new Economy();
 var player = new Player();
 var buysell = new BuySell();
 var travel = new Travel();
+var encounter = new Encounter();
+var init_travel_key = 0;
 
 var candyArray = {
     0: atomicFireballs = new Candy(),
@@ -59,11 +61,19 @@ var npcArray = {
     14: luis = new NPC("Luis", "Venezuela")
 };
 
-
-
 engine.initCandyNames();
 
 engine.initCandyType();
+
+player.managePlayerHealthBar();
+
+encounter.initButtons();
+
+//Problem : if code on line 74 - 76 is moved to line 99 it no longer works
+
+encounter.run(function(ready) {
+    console.log(ready);
+});
 
 buysell.buyCityProduct(function(location) {
     economy.updateEconomy(location);
@@ -75,8 +85,14 @@ buysell.sellCityProducts(function(location) {
 
 travel.flyTo(function(location) {
     engine.stockUpCityProducts(location);
+    encounter.encounterBegin(location);
+    if(init_travel_key !== location){
+        engine.initTravelCost();
+    }
+    init_travel_key = location;
 });
 
 travel.stay(function(location) {
     engine.stockUpCityProducts(location);
+    engine.initTravelCost();
 });

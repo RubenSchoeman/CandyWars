@@ -91,15 +91,19 @@
 
 #weapons_Select {
     margin-top: 10px;
-    height: 130px
+    height: 130px;
 }
 
 #item_Select {
     margin-top: 10px;
-    height: 130px
+    height: 130px;
 }
 
 #product_Select {
     margin-top: 10px;
-    height: 310px
+    height: 310px;
+}
+
+#result_table {
+    padding-top: 10px;
 }

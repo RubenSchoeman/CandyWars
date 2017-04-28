@@ -1,4 +1,5 @@
 function Travel() {
+    var _travel = this;
     var stay = null;
     var previous_location = null;
     var previous_location_counter = 1;
@@ -7,13 +8,17 @@ function Travel() {
     this.flyTo = function(callback) {
         $('#flyTo').on('click', function(event) {
             event.preventDefault();
-
             previous_location = location;
-            var locationString = engine.getSelectedTravelToValue();
-            location = $('#travel_To :selected').val();
-            engine.countDay();
 
-            if(location !== stay) {
+            location = $('#travel_To :selected').val();
+            var locationString = engine.getSelectedTravelToValue();
+            var can_Travel = engine.checkCanTravel(location);
+
+            if(location !== stay && can_Travel) {
+
+                engine.countDay();
+
+                $('#results_table').html('');
                 $('#current_location').html(locationString);
 
                 citiesArray[location].setRooms("Player");
@@ -33,15 +38,20 @@ function Travel() {
                 informant.messages();
 
                 player.setPlayerLocation(location);
-            }
 
-            callback(location);
+                player.deductTravelCosts(location);
+
+                callback(location);
+            } else {
+                $('#results_table').html('<h3>You do not have the fund to travel or you are already there</h3>');
+            }
             stay = location;
         });
     };
 
     this.stay = function(callback) {
         $('#stay').on('click', function(event) {
+
             event.preventDefault();
 
             engine.countDay();
@@ -55,6 +65,9 @@ function Travel() {
             engine.checkCityStock(stay);
 
             informant.messages();
+
+            encounter.encounterBegin(stay);
+
         });
         callback(stay);
     };

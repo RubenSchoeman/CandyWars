@@ -25,10 +25,6 @@ function NPC(npc_name, local) {
             }
         }
 
-        citiesArray[location_key].setRooms(name);
-
-        citiesArray[previous_location].removeFromRoom(name);
-
         for(var j = 0; j < 15; j++) {
             products_ammount = citiesArray[location_key].getStockAmount(j);
 
@@ -67,10 +63,12 @@ function NPC(npc_name, local) {
                 new_units_key = i;
             }
         }
-        
+
         citiesArray[travel_to_key].sellStock(new_units_key, products[1]);
         engine.stockUpCityProducts(travel_to_key);
         products = [];
+        citiesArray[location_key].setRooms(name);
+        citiesArray[previous_location].removeFromRoom(name);
     };
 
     this.getProducts = function() {

@@ -3,6 +3,7 @@ function Location(location_name, engine) {
     var name = location_name;
     var manufactures = "";
     var rooms = [];
+    var travel_cost = 0;
 
 
     var stock = {
@@ -23,6 +24,14 @@ function Location(location_name, engine) {
         14: ["Tootsie Roll", engine.randomHundred(), engine.getRandomInt(5, 100)]
     };
 
+    this.createTravelCost = function() {
+        travel_cost = engine.getRandomInt(300, 4000);
+    };
+
+    this.getTravelCost = function() {
+        return travel_cost;
+    };
+
     this.getRooms = function() {
         return rooms;
     };
@@ -37,8 +46,6 @@ function Location(location_name, engine) {
                 rooms.splice(key, 1);
             }
         }
-        //console.log(rooms);
-        //console.log(name);
     };
 
     this.getName = function() {
