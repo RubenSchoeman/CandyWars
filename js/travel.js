@@ -24,6 +24,9 @@ function Travel() {
                 citiesArray[location].setRooms("Player");
 
                 citiesArray[previous_location].removeFromRoom("Player");
+                player.playerRegen();
+
+                player.managePlayerHealthBar();
 
                 engine.manageNpc();
 
@@ -53,6 +56,10 @@ function Travel() {
         $('#stay').on('click', function(event) {
 
             event.preventDefault();
+
+            player.playerRegen();
+
+            player.managePlayerHealthBar();
 
             engine.countDay();
 

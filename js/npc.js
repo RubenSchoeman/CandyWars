@@ -1,9 +1,6 @@
 function NPC(npc_name, local) {
     var name = npc_name;
     var health = 100;
-    var speed = 1;
-    var level = 1;
-    var weapon = "Bare Fist";
     var current_location = local;
     var new_units_key = 0;
     var travel_to_key = 0;
@@ -43,12 +40,11 @@ function NPC(npc_name, local) {
     this.npcTravel = function() {
         var products_ammount = 0;
         var least_Units = citiesArray[0].getStockAmount(units_key);
-        var sell_Ammount = 0;
 
         for(var key in citiesArray) {
             products_ammount = citiesArray[key].getStockAmount(units_key);
 
-            if(products_ammount < least_Units) {
+            if(products_ammount <= least_Units) {
                 least_Units = products_ammount;
                 travel_to_key = key;
             }

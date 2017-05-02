@@ -35,10 +35,10 @@ function BuySell() {
             backpack_products = [];
 
 
-            _buysell.promptPlayerBuy(function(productAmmount) {
+            _buysell.promptPlayerBuy(function(productAmmount, errorCallback) {
                 var stock_Price = _buysell.getProductStockPrice(current_location, product_val_key);
 
-                if (_buysell.continueTransaction(productAmmount, current_location, product_val_key)) {
+                if (_buysell.continueTransaction(productAmmount, current_location, product_val_key, errorCallback)) {
                     _buysell.createBackpackList(current_location, product_val_key, productAmmount, counter, stock_Price);
                     _buysell.deductMoney(player_money, stock_Price, productAmmount);
                     _buysell.buyCityStock(current_location, product_val_key, productAmmount);
@@ -149,8 +149,8 @@ function BuySell() {
         }
     };
 
-    this.continueTransaction = function(productAmmount, current_location, product_val_key) {
-        if (productAmmount <= citiesArray[current_location].getStockAmount(product_val_key) && productAmmount !== 0) {
+    this.continueTransaction = function(productAmmount, current_location, product_val_key, errorCallback) {
+        if (productAmmount <= citiesArray[current_location].getStockAmount(product_val_key) && productAmmount !== 0 || !errorCallback) {
             return true;
         }
     };
@@ -165,13 +165,16 @@ function BuySell() {
         return have_Amount;
     };
 
-    this.promptPlayerBuy = function(callback) {
-        var productAmmount = prompt("Please select amount");
+    this.promptPlayerBuy = function(callback, errorCallback) {
+        var productAmmount = parseInt(prompt("Please select amount to sell"));
+        if(isNaN(productAmmount)){
+            errorCallback(true);
+        }
         callback(productAmmount);
     };
 
     this.promptPlayerSell = function(callback) {
-        var sell_Ammount = prompt("Please select amount to sell");
+        var sell_Ammount = parseInt(prompt("Please select amount to sell"));
         callback(sell_Ammount);
     };
 

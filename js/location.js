@@ -6,23 +6,23 @@ function Location(location_name, engine) {
     var travel_cost = 0;
 
 
-    var stock = {
-        0: ["Atomic balls", engine.randomHundred(), engine.getRandomInt(5, 100)],
-        1: ["Candy Cigs", engine.randomHundred(), engine.getRandomInt(5, 100)],
-        2: ["Cotton Candy", engine.randomHundred(), engine.getRandomInt(5, 100)],
-        3: ["Gummi Bears", engine.randomHundred(), engine.getRandomInt(5, 100)],
-        4: ["Lollipop", engine.randomHundred(), engine.getRandomInt(5, 100)],
-        5: ["Milk Duds", engine.randomHundred(), engine.getRandomInt(5, 100)],
-        6: ["M&Ms", engine.randomHundred(), engine.getRandomInt(5, 100)],
-        7: ["Jaw Breaker", engine.randomHundred(), engine.getRandomInt(5, 100)],
-        8: ["Kit-Kat", engine.randomHundred(), engine.getRandomInt(5, 100)],
-        9: ["Pop Rocks", engine.randomHundred(), engine.getRandomInt(5, 100)],
-        10: ["Peeps", engine.randomHundred(), engine.getRandomInt(5, 100)],
-        11: ["Skittles", engine.randomHundred(), engine.getRandomInt(5, 100)],
-        12: ["Smarties", engine.randomHundred(), engine.getRandomInt(5, 100)],
-        13: ["Starburst", engine.randomHundred(), engine.getRandomInt(5, 100)],
-        14: ["Tootsie Roll", engine.randomHundred(), engine.getRandomInt(5, 100)]
-    };
+    var stock = [
+        ["Atomic balls", engine.randomHundred(), engine.getRandomInt(5, 100)],
+        ["Candy Cigs", engine.randomHundred(), engine.getRandomInt(5, 100)],
+        ["Cotton Candy", engine.randomHundred(), engine.getRandomInt(5, 100)],
+        ["Gummi Bears", engine.randomHundred(), engine.getRandomInt(5, 100)],
+        ["Lollipop", engine.randomHundred(), engine.getRandomInt(5, 100)],
+        ["Milk Duds", engine.randomHundred(), engine.getRandomInt(5, 100)],
+        ["M&Ms", engine.randomHundred(), engine.getRandomInt(5, 100)],
+        ["Jaw Breaker", engine.randomHundred(), engine.getRandomInt(5, 100)],
+        ["Kit-Kat", engine.randomHundred(), engine.getRandomInt(5, 100)],
+        ["Pop Rocks", engine.randomHundred(), engine.getRandomInt(5, 100)],
+        ["Peeps", engine.randomHundred(), engine.getRandomInt(5, 100)],
+        ["Skittles", engine.randomHundred(), engine.getRandomInt(5, 100)],
+        ["Smarties", engine.randomHundred(), engine.getRandomInt(5, 100)],
+        ["Starburst", engine.randomHundred(), engine.getRandomInt(5, 100)],
+        ["Tootsie Roll", engine.randomHundred(), engine.getRandomInt(5, 100)]
+    ];
 
     this.createTravelCost = function() {
         travel_cost = engine.getRandomInt(300, 4000);

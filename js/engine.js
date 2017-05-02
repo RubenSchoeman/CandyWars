@@ -3,24 +3,6 @@ function Engine(){
     var location = 0;
     var day_counter = 0;
 
-    var candy_type = [
-        "Atomic balls",
-        "Candy Cigs",
-        "Cotton Candy",
-        "Gummi Bears",
-        "Lollipop",
-        "Milk Duds",
-        "M&Ms",
-        "Jaw Breaker",
-        "Kit-Kat",
-        "Pop Rocks",
-        "Peeps",
-        "Skittles",
-        "Smarties",
-        "Starburst",
-        "Tootsie Roll",
-    ];
-
     this.countDay = function() {
         day_counter += 1;
     };
@@ -30,24 +12,30 @@ function Engine(){
     };
 
     this.initCandyType = function(){
-        for(var key in candy_type){
-            InitCandy(candy_type[key]);
+
+        for(var key in candyArray){
+            candyArray[key].setWantedLevel(_engine.randomNumber());
+            candyArray[key].setCandyManufacturingDiff(_engine.randomNumber());
         }
     };
 
-    this.initCandyNames = function() {
-        for(var key in candyArray){
-            candyArray[key].setName(_engine.getCandyType(key));
+    this.randomNumber = function() {
+        var temp_number = Math.ceil(Math.random() * 10);
+
+        if (temp_number === 0) {
+            temp_number = temp_number + 1;
         }
+
+        return temp_number;
     };
 
     this.getCandyKey = function(string) {
         var array_key = 0;
-        var name = candy_type[array_key];
+        var name = candyArray[array_key].getName();
 
         while(name !== string) {
             array_key += 1;
-            name = candy_type[array_key];
+            name = candyArray[array_key].getName();
         }
         return array_key;
     };
@@ -77,14 +65,6 @@ function Engine(){
 
     this.getRandomInt = function(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
-    };
-
-    this.getCandyType = function(index) {
-        return candy_type[index];
-    };
-
-    this.getCandy = function() {
-        return candy_type;
     };
 
     this.getCandyWantedLevel = function(key) {
@@ -124,6 +104,41 @@ function Engine(){
         } else {
             return false;
         }
+    };
+
+    this.getEnemyDamage = function() {
+        var player_location = player.getPlayerLocation();
+        var enemy_array = citiesArray[player_location].getRooms();
+        var damage = 0;
+        var length = 0;
+
+        for(var key in enemy_array) {
+            var enemy = enemy_array[key];
+            length += 1;
+
+            if(enemy !== "Player") {
+                for (var num in npcArray) {
+                    if(enemy === npcArray[num].getName()) {
+                        damage = damage + 2;
+                    }
+                }
+            }
+        }
+
+        damage = damage * length;
+        return damage;
+    };
+
+    this.setAllBtnFalse = function() {
+        $('#flyTo').prop('disabled', true);
+        $('#stay').prop('disabled', true);
+        $('#product_Buy_Btn').prop('disabled', true);
+        $('#product_Sell_Btn').prop('disabled', true);
+        $('.shop-buy-btn').prop('disabled', true);
+        $('.shop-sell-btn').prop('disabled', true);
+        $('#run').prop('disabled', true);
+        $('#surrender').prop('disabled', true);
+        $('#bribe').prop('disabled', true);
     };
 
 }

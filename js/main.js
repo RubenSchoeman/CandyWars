@@ -7,61 +7,59 @@ var travel = new Travel();
 var encounter = new Encounter();
 var init_travel_key = 0;
 
-var candyArray = {
-    0: atomicFireballs = new Candy(),
-    1: candyCigarettes = new Candy(),
-    2: cottonCandy = new Candy(),
-    3: gummiBears = new Candy(),
-    4: lolliPop = new Candy(),
-    5: milkDuds = new Candy(),
-    6: MMs = new Candy(),
-    7: jawBreaker = new Candy(),
-    8: kitKat = new Candy(),
-    9: popRocks = new Candy(),
-    10: peeps = new Candy(),
-    11: skittles = new Candy(),
-    12: smarties = new Candy(),
-    13: starburst = new Candy(),
-    14: tootsieRolls = new Candy()
-};
+var candyArray = [
+    new Candy("Atomic balls"),
+    new Candy("Candy Cigs"),
+    new Candy("Cotton Candy"),
+    new Candy("Gummi Bears"),
+    new Candy("Lollipop"),
+    new Candy("Milk Duds"),
+    new Candy("M&Ms"),
+    new Candy("Jaw Breaker"),
+    new Candy("Kit-Kat"),
+    new Candy("Pop Rocks"),
+    new Candy("Peeps"),
+    new Candy("Skittles"),
+    new Candy("Smarties"),
+    new Candy("Starburst"),
+    new Candy("Tootsie Roll")
+];
 
-var citiesArray = {
-    0: canberra = new Location("Australia", engine),
-    1: brasilia = new Location("Brazil", engine),
-    2: beijing = new Location("China", engine),
-    3: paris = new Location("France", engine),
-    4: berlin = new Location("Germany", engine),
-    5: rome = new Location("Italy", engine),
-    6: tokyo = new Location("Japan", engine),
-    7: mexico_City = new Location("Mexico", engine),
-    8: amsterdam = new Location("Netherlands", engine),
-    9: moscow = new Location("Russia", engine),
-    10: singapore = new Location("Singapore", engine),
-    11: pretoria = new Location("South Africa", engine),
-    12: london = new Location("UK", engine),
-    13: washington = new Location("USA", engine),
-    14: caracas = new Location("Venezuela", engine)
-};
+var citiesArray = [
+    new Location("Australia", engine),
+    new Location("Brazil", engine),
+    new Location("China", engine),
+    new Location("France", engine),
+    new Location("Germany", engine),
+    new Location("Italy", engine),
+    new Location("Japan", engine),
+    new Location("Mexico", engine),
+    new Location("Netherlands", engine),
+    new Location("Russia", engine),
+    new Location("Singapore", engine),
+    new Location("South Africa", engine),
+    new Location("UK", engine),
+    new Location("USA", engine),
+    new Location("Venezuela", engine)
+];
 
-var npcArray = {
-    0: steve = new NPC("Steve", "Australia"),
-    1: márcio = new NPC("Márcio", "Brazil"),
-    2: yehao = new NPC("Yehao", "China"),
-    3: jean = new NPC("Jean", "France"),
-    4: hans = new NPC("Hans", "Germany"),
-    5: giovanni = new NPC("Giovanni", "Italy"),
-    6: nihonjin = new NPC("Nihonjin", "Japan"),
-    7: jose = new NPC("Jose", "Mexico"),
-    8: bram = new NPC("Bram", "Netherlands"),
-    9: ivor = new NPC("Ivor", "Russia"),
-    10: agu = new NPC("Agu", "Singapore"),
-    11: willem = new NPC("Willem", "South Africa"),
-    12: richard = new NPC("Richard", "UK"),
-    13: mike = new NPC("Mike", "USA"),
-    14: luis = new NPC("Luis", "Venezuela")
-};
-
-engine.initCandyNames();
+var npcArray = [
+    new NPC("Steve", "Australia"),
+    new NPC("Márcio", "Brazil"),
+    new NPC("Yehao", "China"),
+    new NPC("Jean", "France"),
+    new NPC("Hans", "Germany"),
+    new NPC("Giovanni", "Italy"),
+    new NPC("Nihonjin", "Japan"),
+    new NPC("Jose", "Mexico"),
+    new NPC("Bram", "Netherlands"),
+    new NPC("Ivor", "Russia"),
+    new NPC("Agu", "Singapore"),
+    new NPC("Willem", "South Africa"),
+    new NPC("Richard", "UK"),
+    new NPC("Mike", "USA"),
+    new NPC("Luis", "Venezuela")
+];
 
 engine.initCandyType();
 
@@ -69,11 +67,7 @@ player.managePlayerHealthBar();
 
 encounter.initButtons();
 
-//Problem : if code on line 74 - 76 is moved to line 99 it no longer works
-
-encounter.run(function(ready) {
-    console.log(ready);
-});
+encounter.run();
 
 buysell.buyCityProduct(function(location) {
     economy.updateEconomy(location);

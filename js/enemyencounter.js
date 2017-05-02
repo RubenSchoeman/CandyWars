@@ -19,6 +19,8 @@ function Encounter() {
 
     var _encounter = this;
 
+
+//  move to engine.js and call in main.js
     this.initButtons = function() {
         $('#fight').prop('disabled', true);
         $('#run').prop('disabled', true);
@@ -53,12 +55,38 @@ function Encounter() {
         return false;
     };
 
-    this.run = function(callback) {
+    this.run = function() {
         $('#run').on('click', function(event) {
             event.preventDefault();
-            $('#results_table').html('you have ran away');
-            var ready = true;
-            callback(ready);
+            var enemy_array = citiesArray[player.getPlayerLocation()].getRooms();
+            var enemy_number = parseInt(enemy_array.length) - 1;
+            var got_away = false;
+            var chance = engine.getRandomInt(0, 10);
+            var enemy_damage = engine.getEnemyDamage();
+            var player_health = player.getPlayerHealth();
+
+//  Move all the jquery into one function in engine.js (engine.escaped())
+//  Remember to add armour display and reduction if available
+            if(chance <= 5) {
+                $('#results_table').html('<h3>You have managed to escape</h3>');
+                $('#flyTo').prop('disabled', false);
+                $('#stay').prop('disabled', false);
+                $('#product_Buy_Btn').prop('disabled', false);
+                $('#product_Sell_Btn').prop('disabled', false);
+                $('.shop-buy-btn').prop('disabled', false);
+                $('.shop-sell-btn').prop('disabled', false);
+                $('#run').prop('disabled', true);
+                $('#surrender').prop('disabled', true);
+                $('#bribe').prop('disabled', true);
+
+            } else {
+                var display_player_health = player_health - enemy_damage;
+                var set_col = player.getPlayerDisplayHealth(display_player_health);
+                $('#results_table').html('<h3>You are still being chased by ' + enemy_number + ' enemy/s and have taken ' + enemy_damage + ' damage. Player Health: ' + display_player_health + '</h3>');
+
+                player.setPlayerHealth(display_player_health);
+                player.managePlayerHealthBar();
+            }
         });
 
     };
@@ -73,6 +101,7 @@ function Encounter() {
         if(day_counter > 3) {
             if(_encounter.checkRooms(location)){
 
+//  move to engine.js (engine.initEncounterBtn())
                 $('#flyTo').prop('disabled', true);
                 $('#stay').prop('disabled', true);
                 $('#product_Buy_Btn').prop('disabled', true);
@@ -86,29 +115,4 @@ function Encounter() {
             }
         }
     };
-
-    /*_encounter.run(function(ready) {
-        if(ready) {
-            $('#flyTo').prop('disabled', false);
-            $('#stay').prop('disabled', false);
-            $('#product_Buy_Btn').prop('disabled', false);
-            $('#product_Sell_Btn').prop('disabled', false);
-            $('.shop-buy-btn').prop('disabled', false);
-            $('.shop-sell-btn').prop('disabled', false);
-        }
-    });*/
-
-    /*if(_encounter.playerHasWeapon()) {
-
-    } else {
-        $('.fight').prop('disabled', true);
-    }
-
-
-
-    if (_encounter.playerSurrender()) {
-
-    } else if (_encounter.playerCanBribe()) {
-
-    }*/
 }

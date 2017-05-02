@@ -4,17 +4,20 @@ function Player() {
     var player_health = 100;
     var player_armour = 0;
     var player_damage = null;
-    var player_speed = 2;
     var player_money = 1000;
     var bar_Health = 12;
     var health_Text = "Player Health";
     var armour_Text = "Player Armour";
     var player_Location = 0;
 
+//  Move this function to engine.js (engine.managePlayerHealthBar())
+
     this.managePlayerHealthBar = function() {
-        $('#test').html('<div id="player_Health_Bar_Color" class="col-xs-' + _player.getPlayerDisplayHealth(_player.getPlayerHealth()) + '">' + _player.getHealthText() + '</div>');
+        $('#test').html('<div id="player_Health_Bar_Color" class="col-xs-' + bar_Health + '">' + health_Text + '</div>');
         if(player.getHealthText() === "You be DEAD!!!") {
             $('#player_Health_Bar_Color').css('background-color', 'red');
+            $('#results_table').html('<h3>Your Score is ' + player_money + '</h3>');
+            engine.setAllBtnFalse();
         }
     };
 
@@ -25,7 +28,7 @@ function Player() {
     };
 
     this.setPlayerHealth = function(set_health) {
-        player_health = player_health - set_health;
+        player_health = set_health;
     };
 
     this.setPlayerArmour = function(set_armour) {
@@ -34,10 +37,6 @@ function Player() {
 
     this.setPlayerDamage = function(set_damage) {
         player_armour = set_damage;
-    };
-
-    this.setPlayerSpeed = function(set_speed) {
-        player_speed = set_speed;
     };
 
     this.setPlayerMoney = function(set_money) {
@@ -68,16 +67,22 @@ function Player() {
         return player_Damage;
     };
 
-    this.getPlayerSpeed = function() {
-        return player_speed;
-    };
-
     this.getPlayerMoney = function() {
         return player_money;
     };
 
     this.getPlayerLocation = function() {
         return player_Location;
+    };
+
+    this.playerRegen = function() {
+        if(player_health > 100){
+            player_health += 3;
+        }
+
+        if(player_health < 100){
+            player_health = 100;
+        }
     };
 
     this.getPlayerDisplayHealth = function(health) {
