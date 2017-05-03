@@ -60,20 +60,7 @@
     border-style: hidden;
     box-shadow: 0px 4px 6px grey;
     margin-top: 0px;
-    height: 152px;
-}
-
-.items-head {
-    background-color: #80deea;
-    box-shadow: 0px 0px 6px grey;
-    margin-top: 5px;
-}
-
-.items-table {
-    border-style: hidden;
-    box-shadow: 0px 4px 6px grey;
-    margin-top: 0px;
-    height: 152px;
+    height: 332px;
 }
 
 .backpack-products-head {
@@ -91,7 +78,7 @@
 
 #weapons_Select {
     margin-top: 10px;
-    height: 130px;
+    height: 310px;
 }
 
 #item_Select {

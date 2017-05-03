@@ -3,6 +3,7 @@ var informant = new Informant();
 var economy = new Economy();
 var player = new Player();
 var buysell = new BuySell();
+var shop = new Shop();
 var travel = new Travel();
 var encounter = new Encounter();
 var init_travel_key = 0;
@@ -61,13 +62,34 @@ var npcArray = [
     new NPC("Luis", "Venezuela")
 ];
 
+var weaponsArray = [
+    new Weapon("Bare Fist", 50, false, 250, 25),
+    new Weapon("Plastic Sword", 75, false, 300, 25),
+    new Weapon("Water Pistol", 100, true, 400, 30),
+    new Weapon("Nerf Pistol", 125, true, 600, 30),
+    new Weapon("Bat", 150, false, 750, 35),
+    new Weapon("BB Gun", 175, true, 1000, 30),
+    new Weapon("Pepper Spray", 200, false, 3500, 3),
+    new Weapon("Paintball Gun", 300, true, 10000, 15),
+    new Weapon("Water Baloon", 175, false, 1000, 1),
+    new Weapon("Paintball bomb", 250, false, 2500, 1)
+];
+
 engine.initCandyType();
 
 player.managePlayerHealthBar();
 
-encounter.initButtons();
+engine.initBtn();
 
 encounter.run();
+
+encounter.surrender();
+
+encounter.bribe();
+
+shop.buyItem();
+
+shop.sellItem();
 
 buysell.buyCityProduct(function(location) {
     economy.updateEconomy(location);

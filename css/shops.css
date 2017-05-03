@@ -21,7 +21,7 @@
     border-style: hidden;
     box-shadow: 0px 4px 6px grey;
     margin-top: 0px;
-    height: 175px
+    height: 375px
 }
 
 .shop-items-head {
@@ -40,11 +40,5 @@
 #shop_Weapons {
     margin-top: 10px;
     margin-bottom: 10px;
-    height: 155px
-}
-
-#shop_Items {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    height: 155px
+    height: 355px
 }

@@ -76,11 +76,11 @@ function Player() {
     };
 
     this.playerRegen = function() {
-        if(player_health > 100){
+        if(player_health < 100){
             player_health += 3;
         }
 
-        if(player_health < 100){
+        if(player_health > 100){
             player_health = 100;
         }
     };

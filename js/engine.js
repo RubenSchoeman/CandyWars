@@ -129,6 +129,16 @@ function Engine(){
         return damage;
     };
 
+    this.getPlayerBackpackArray = function(callback) {
+        buysell.getBackpackArray(function(backpackArray){
+            callback(backpackArray);
+        });
+    };
+
+    this.resetPlayerBackpack = function() {
+        buysell.resetBackpacks();
+    };
+
     this.setAllBtnFalse = function() {
         $('#flyTo').prop('disabled', true);
         $('#stay').prop('disabled', true);
@@ -136,6 +146,37 @@ function Engine(){
         $('#product_Sell_Btn').prop('disabled', true);
         $('.shop-buy-btn').prop('disabled', true);
         $('.shop-sell-btn').prop('disabled', true);
+        $('#run').prop('disabled', true);
+        $('#surrender').prop('disabled', true);
+        $('#bribe').prop('disabled', true);
+    };
+
+    this.setBtnSuccess = function() {
+        $('#flyTo').prop('disabled', false);
+        $('#stay').prop('disabled', false);
+        $('#product_Buy_Btn').prop('disabled', false);
+        $('#product_Sell_Btn').prop('disabled', false);
+        $('.shop-buy-btn').prop('disabled', false);
+        $('.shop-sell-btn').prop('disabled', false);
+        $('#run').prop('disabled', true);
+        $('#surrender').prop('disabled', true);
+        $('#bribe').prop('disabled', true);
+    };
+
+    this.setEncounterBtn = function() {
+        $('#flyTo').prop('disabled', true);
+        $('#stay').prop('disabled', true);
+        $('#product_Buy_Btn').prop('disabled', true);
+        $('#product_Sell_Btn').prop('disabled', true);
+        $('.shop-buy-btn').prop('disabled', true);
+        $('.shop-sell-btn').prop('disabled', true);
+        $('#run').prop('disabled', false);
+        $('#surrender').prop('disabled', false);
+        $('#bribe').prop('disabled', false);
+    };
+
+    this.initBtn = function() {
+        $('#fight').prop('disabled', true);
         $('#run').prop('disabled', true);
         $('#surrender').prop('disabled', true);
         $('#bribe').prop('disabled', true);

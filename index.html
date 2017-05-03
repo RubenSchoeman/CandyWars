@@ -156,7 +156,7 @@
 -->
                                         <div class="row">
                                             <div class="col-xs-11 weapons-head">
-                                                Weapons
+                                                Usables
                                             </div>
                                             <div class="col-xs-1 boundry"></div>
                                         </div>
@@ -166,41 +166,7 @@
                                         <div class="row">
                                             <div class="col-xs-11 weapons-table">
                                                 <select multiple class="form-control" id="weapons_Select">
-                                                    <option id="weapon0"></option>
-                                                    <option id="weapon1"></option>
-                                                    <option id="weapon2"></option>
-                                                    <option id="weapon3"></option>
-                                                    <option id="weapon4"></option>
-                                                    <option id="weapon5"></option>
-                                                    <option id="weapon6"></option>
-                                                    <option id="weapon7"></option>
-                                                </select>
-                                            </div>
-                                            <div class="col-xs-1 boundry"></div>
-                                        </div>
-<!--
-  items head.
--->
-                                        <div class="row">
-                                            <div class="col-xs-11 items-head">
-                                                Items
-                                            </div>
-                                            <div class="col-xs-1 boundry"></div>
-                                        </div>
-<!--
-  items table.
--->
-                                        <div class="row">
-                                            <div class="col-xs-11 items-table">
-                                                <select multiple class="form-control" id="item_Select">
-                                                    <option id="item0"></option>
-                                                    <option id="item1"></option>
-                                                    <option id="item2"></option>
-                                                    <option id="item3"></option>
-                                                    <option id="item4"></option>
-                                                    <option id="item5"></option>
-                                                    <option id="item6"></option>
-                                                    <option id="item7"></option>
+
                                                 </select>
                                             </div>
                                             <div class="col-xs-1 boundry"></div>
@@ -498,7 +464,7 @@
 -->
                         <div class="row">
                             <div class="col-xs-12 shop-weapon-head">
-                                Weapons
+                                Weapons, Ammo, Items
                             </div>
                         </div>
 <!--
@@ -507,39 +473,23 @@
                         <div class="row">
                             <div class="col-xs-12 shop-weapon-table">
                                 <select multiple class="form-control" id="shop_Weapons">
-                                    <option>Bare Fist</option>
-                                    <option>Plastic Sword</option>
-                                    <option>Water Pistol</option>
-                                    <option>Nerf Pistol</option>
-                                    <option>Belt</option>
-                                    <option>BB Gun</option>
-                                    <option>Pepper Spray</option>
-                                    <option>Paintball Gun</option>
-                                </select>
-                            </div>
-                        </div>
-<!--
-  shop items head.
--->
-                        <div class="row">
-                            <div class="col-xs-12 shop-items-head">
-                                Items
-                            </div>
-                        </div>
-<!--
-  shop items table.
--->
-                        <div class="row">
-                            <div class="col-xs-12 shop-items-table">
-                                <select multiple class="form-control" id="shop_Items">
-                                    <option>Water Baloon</option>
-                                    <option>Paintball Granade</option>
-                                    <option>Leather Jacket</option>
-                                    <option>Padlock</option>
-                                    <option>Dog Poop</option>
-                                    <option>Running Shoes</option>
-                                    <option>Energy Drink</option>
-                                    <option>Paintball Ammo</option>
+                                    <option >Bare Fist : 250</option>
+                                    <option >Plastic Sword : 300</option>
+                                    <option >Water Pistol : 400</option>
+                                    <option >Nerf Pistol : 600</option>
+                                    <option >Bat : 750</option>
+                                    <option >BB Gun : 1000</option>
+                                    <option >Pepper Spray : 2500</option>
+                                    <option >Paintball Gun : 10000</option>
+                                    <option >Water Baloon : 1000</option>
+                                    <option >Paintball bomb : 5000</option>
+                                    <option >Leather Jacket : 2000</option>
+                                    <option >Dog Poop : 500</option>
+                                    <option >Water P Ammo : 10</option>
+                                    <option >Nerf Ammo : 25</option>
+                                    <option >BB Ammo : 30</option>
+                                    <option >Paintball Ammo : 500</option>
+                                    <option >Health Kit : 1000</option>
                                 </select>
                             </div>
                         </div>
@@ -550,14 +500,14 @@
                 <div class="col-xs-3">
                     <div class="row">
                         <div class="col-xs-12">
-                            <button class="shop-buy-btn">
+                            <button class="shop-buy-btn" id="shop_buy">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"> Buy</span>
                             </button>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
-                            <button class="shop-sell-btn">
+                            <button class="shop-sell-btn" id="shop_sell">
                                 <span class="glyphicon glyphicon-minus" aria-hidden="true"> Sell</span>
                             </button>
                         </div>
@@ -574,10 +524,12 @@
     <script src="js/location.js"></script>
     <script src="js/informant.js"></script>
     <script src="js/buysellproducts.js"></script>
+    <script src="js/shop.js"></script>
     <script src="js/economy.js"></script>
     <script src="js/npc.js"></script>
     <script src="js/travel.js"></script>
     <script src="js/enemyencounter.js"></script>
+    <script src="js/weapons.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

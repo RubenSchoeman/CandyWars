@@ -22,7 +22,10 @@ function BuySell() {
 *   checks if transaction may continue
 *   creates a list of products in the backpack
 *   updates money of player and product amounts for display
-*   callback is used in main.js to manage the economy
+*   callback is used in main.js to manage the economy(might be unnecessary)
+*
+*   still need to implement a change that stops the player from buying more items than
+*   he can afford
 */
 
     this.buyCityProduct = function(callback) {
@@ -34,13 +37,13 @@ function BuySell() {
             product_val_key = _buysell.getProductBuyKey();
             backpack_products = [];
 
+            _buysell.promptPlayerBuy(function(productAmmount) {
+                var stock_price = _buysell.getProductStockPrice(current_location, product_val_key);
+                var isTrue = productAmmount;
 
-            _buysell.promptPlayerBuy(function(productAmmount, errorCallback) {
-                var stock_Price = _buysell.getProductStockPrice(current_location, product_val_key);
-
-                if (_buysell.continueTransaction(productAmmount, current_location, product_val_key, errorCallback)) {
-                    _buysell.createBackpackList(current_location, product_val_key, productAmmount, counter, stock_Price);
-                    _buysell.deductMoney(player_money, stock_Price, productAmmount);
+                if (_buysell.continueTransaction(productAmmount, current_location, product_val_key, stock_price, player_money, isTrue)) {
+                    _buysell.createBackpackList(current_location, product_val_key, productAmmount, counter, stock_price);
+                    _buysell.deductMoney(player_money, stock_price, productAmmount);
                     _buysell.buyCityStock(current_location, product_val_key, productAmmount);
                     _buysell.displayPlayerMoney(player_money);
                     player.setPlayerMoney(player_money);
@@ -51,16 +54,21 @@ function BuySell() {
         });
     };
 
+/*
+*   This function (sellCityProduct) handles the product sell button on click event:
+*
+*   callback is used in main.js to manage the economy(might be unnecessary)
+*/
     this.sellCityProducts = function(callback) {
         $('#product_Sell_Btn').on('click', function(event) {
             event.preventDefault();
 
             current_location = player.getPlayerLocation();
             player_money = player.getPlayerMoney();
-            product_wanted_string = _buysell.getProductWantedString();
+            product_selected_string = _buysell.getProductWantedString();
             needed_stock = citiesArray[current_location].makeLowStockArray();
 
-            var string = _buysell.createString(product_wanted_string);
+            var string = _buysell.createString(product_selected_string);
             var product_wanted_key = engine.getCandyKey(string);
             var stock_Price = _buysell.getProductStockPrice(current_location, product_wanted_key);
 
@@ -94,11 +102,20 @@ function BuySell() {
         });
     };
 
+/*
+*   all the function below are used withing the buy and sell function above
+*
+*/
     this.createBackpackList = function(current_location, product_val_key, productAmmount, i, stock_Price) {
         backpack_products.push('<option>' + citiesArray[current_location].getStockArrayName(product_val_key) + ":" + productAmmount + '</option>');
         backpack_use.push([candyArray[product_val_key].getName(),productAmmount, stock_Price , product_val_key, counter]);
         $('#product' + i).html(backpack_products.join('\n'));
         counter = i + 1;
+    };
+
+    this.resetBackpacks = function() {
+        backpack_products = [];
+        backpack_use = [];
     };
 
     this.removeFromBackpackList = function(backpack_use, string) {
@@ -116,6 +133,10 @@ function BuySell() {
         }
         $('#product' + counter).html("");
         return backpack_key;
+    };
+
+    this.getBackpackArray = function(callback) {
+        callback(backpack_use);
     };
 
     this.createString = function(product_wanted_string) {
@@ -149,8 +170,17 @@ function BuySell() {
         }
     };
 
-    this.continueTransaction = function(productAmmount, current_location, product_val_key, errorCallback) {
-        if (productAmmount <= citiesArray[current_location].getStockAmount(product_val_key) && productAmmount !== 0 || !errorCallback) {
+    this.continueTransaction = function(productAmmount, current_location, product_val_key, stock_price, player_money, isTrue) {
+        var total = productAmmount * stock_price;
+
+        if((isTrue >= 0) && (typeof isTrue !== 'boolean')) {
+            isTrue = false;
+        }
+
+        if(player_money < total) {
+            $('#results_table').html("<h3>You do not have enough money for that amount</h3>");
+            return false;
+        } else if (productAmmount <= citiesArray[current_location].getStockAmount(product_val_key) && productAmmount !== 0 && !isTrue) {
             return true;
         }
     };
@@ -165,12 +195,15 @@ function BuySell() {
         return have_Amount;
     };
 
-    this.promptPlayerBuy = function(callback, errorCallback) {
+
+//  this function should only return a number
+    this.promptPlayerBuy = function(callback) {
         var productAmmount = parseInt(prompt("Please select amount to sell"));
         if(isNaN(productAmmount)){
-            errorCallback(true);
+            callback(true);
+        } else {
+            callback(productAmmount);
         }
-        callback(productAmmount);
     };
 
     this.promptPlayerSell = function(callback) {
@@ -178,8 +211,8 @@ function BuySell() {
         callback(sell_Ammount);
     };
 
-    this.deductMoney = function(money, price, productAmmount) {
-        player_money = money - (price * productAmmount);
+    this.deductMoney = function(money, stock_price, productAmmount) {
+        player_money = money - (stock_price * productAmmount);
     };
 
     this.displayPlayerMoney = function(money) {

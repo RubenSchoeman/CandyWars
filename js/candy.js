@@ -2,7 +2,7 @@
 *   15 candy instances is created in main.js
 *   each with unique name, key and other values
 */
-function Candy(candy_name){
+function Candy(candy_name) {
     var name = candy_name;
     var wanted_level = null; // 10 very wanted
     var manufacture_difficulty = null; // 10 very difficult
