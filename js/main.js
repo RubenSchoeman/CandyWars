@@ -75,6 +75,19 @@ var weaponsArray = [
     new Weapon("Paintball bomb", 250, false, 2500, 1)
 ];
 
+var itemsArray = [
+    new Item("Leather Jacket", 2000),
+    new Item("Dog Poop", 500),
+    new Item("Health Kit", 1000)
+];
+
+var ammoArray = [
+    new Ammo("Water P Ammo", 10),
+    new Ammo("Nerf Ammo", 25),
+    new Ammo("BB Ammo", 30),
+    new Ammo("Paintball Ammo", 500)
+];
+
 engine.initCandyType();
 
 player.managePlayerHealthBar();

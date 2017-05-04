@@ -119,7 +119,7 @@ function Location(location_name, engine) {
         for(var key in stock){
 
             if (stock[key][1] < 20) {
-                check_stock.push('<option>' + stock[key][0] + ":"  + "     price: " + stock[key][2] + '</option>');
+                check_stock.push('<option>' + stock[key][0] + ":"  + " price: " + stock[key][2] + '</option>');
             }
         }
         $('#products_Wanted').html(check_stock.join('\n'));

@@ -2,9 +2,9 @@ function Player() {
     var _player = this;
 
     var player_health = 100;
-    var player_armour = 0;
+    var player_armour = false;
     var player_damage = null;
-    var player_money = 1000;
+    var player_money = 10000000;
     var bar_Health = 12;
     var health_Text = "Player Health";
     var armour_Text = "Player Armour";
@@ -35,8 +35,8 @@ function Player() {
         player_armour = set_armour;
     };
 
-    this.setPlayerDamage = function(set_damage) {
-        player_armour = set_damage;
+    this.setPlayerDamage = function(weapon) {
+        player_damage = weapon;
     };
 
     this.setPlayerMoney = function(set_money) {
@@ -76,12 +76,16 @@ function Player() {
     };
 
     this.playerRegen = function() {
-        if(player_health < 100){
-            player_health += 3;
-        }
+        var armour = _player.getPlayerArmour();
 
-        if(player_health > 100){
-            player_health = 100;
+        if (!armour || player_health < 100) {
+
+            player_health += 3;
+            player.setPlayerArmour(false);
+
+            if(player_health > 100){
+                player_health = 100;
+            }
         }
     };
 
@@ -147,4 +151,5 @@ function Player() {
 
         return bar_Health;
     };
+
 }

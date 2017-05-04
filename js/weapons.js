@@ -38,6 +38,13 @@ function Weapon(name, max_damage, requires_ammo, price, durability) {
     };
 
     this.getAmmo = function() {
-        return ammo;
+        if(ammo_required === true) {
+            return ammo;
+        } else {
+            ammo = "NA";
+            return ammo;
+        }
+
     };
+
 }

@@ -2,9 +2,18 @@ function Engine(){
     var _engine = this;
     var location = 0;
     var day_counter = 0;
+    var days_left = 10;
+
 
     this.countDay = function() {
         day_counter += 1;
+        days_left -= 1;
+
+        $('#days_alive').html('Days left : ' + days_left);
+
+        if(days_left <= 0) {
+            _engine.setAllBtnFalse();
+        }
     };
 
     this.getDayCounter = function() {
@@ -137,6 +146,26 @@ function Engine(){
 
     this.resetPlayerBackpack = function() {
         buysell.resetBackpacks();
+    };
+
+    this.weaponName = function(ammo_name) {
+        var weapon_name = "";
+        switch (ammo_name) {
+            case "Water P Ammo":
+                weapon_name = "Water Pistol";
+                break;
+            case "Nerf Ammo":
+                weapon_name = "Nerf Pistol";
+                break;
+            case "BB Ammo":
+                weapon_name = "BB Gun";
+                break;
+            case "Paintball Ammo":
+                weapon_name = "Paintball Gun";
+                break;
+            default:
+        }
+        return weapon_name;
     };
 
     this.setAllBtnFalse = function() {
