@@ -37,6 +37,10 @@ function Weapon(name, max_damage, requires_ammo, price, durability) {
         ammo = ammo + set_ammo;
     };
 
+    this.removeAmmo = function() {
+        ammo = ammo - 1;
+    };
+
     this.getAmmo = function() {
         if(ammo_required === true) {
             return ammo;

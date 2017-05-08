@@ -100,6 +100,8 @@ encounter.surrender();
 
 encounter.bribe();
 
+encounter.fight();
+
 shop.buyItem();
 
 shop.sellItem();

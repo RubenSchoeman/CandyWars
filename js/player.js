@@ -4,10 +4,9 @@ function Player() {
     var player_health = 100;
     var player_armour = false;
     var player_damage = null;
-    var player_money = 10000000;
+    var player_money = 1000;
     var bar_Health = 12;
     var health_Text = "Player Health";
-    var armour_Text = "Player Armour";
     var player_Location = 0;
 
 //  Move this function to engine.js (engine.managePlayerHealthBar())

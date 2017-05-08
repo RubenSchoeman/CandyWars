@@ -6,7 +6,7 @@ function Shop() {
 
     this.buyItem = function() {
         $('#shop_buy').on('click', function() {
-            var weapon_name = _shop.createString($('#shop_Weapons :selected').val());
+            var weapon_name = engine.createString($('#shop_Weapons :selected').val());
             var ammmo_item = _shop.isAmmoOrItem(weapon_name);//give var ammo_item better name
 
             if(_shop.continueTransaction(weapon_name, ammmo_item)) {
@@ -44,7 +44,7 @@ function Shop() {
 
     this.sellItem = function() {
         $('#shop_sell').on('click', function() {
-            var weapon_key = _shop.createString($('#weapons_Select :selected').val());
+            var weapon_key = engine.createString($('#weapons_Select :selected').val());
             var ammmo_or_item = _shop.isAmmoOrItem(weapon_key);
             var item_price = (_shop.getItemPrice(weapon_key, ammmo_or_item)) / 2;
             var player_money = player.getPlayerMoney();
@@ -83,6 +83,8 @@ function Shop() {
                 return false;
             }
         } else if(weapon_name === "Dog Poop") {
+            engine.setPoop();
+            $('#results_table').html('<h3>No dares come near you for a day</h3>');
 
         } else {
             if(player_health !== 100) {
@@ -162,20 +164,6 @@ function Shop() {
     };
 
 //this function is used in buysellproducts make one function
-    this.createString = function(weapon_key) {
-        var string = "";
-        var i = 0;
-        var char = weapon_key[0];
-
-        while(char !== ":"){
-            string = string + char;
-            i = i + 1;
-            char = weapon_key[i];
-        }
-        return string;
-    };
-
-//this function is used in buysellproducts make one function
     this.createWeaponList = function(weapon_name, ammo, i) {
         backpack_array.push([weapon_name, ammo, counter]);
         backpack_weapons.push('<option>' + weapon_name + ":" + ammo + '</option>');
@@ -183,6 +171,31 @@ function Shop() {
         counter = i + 1;
     };
 
+//create a class for the weapons array in backpack;
+    this.checkWeaponsInBackpack = function() {
+        if (backpack_array.length > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+
+//  create a back class for backpack_array
+    this.getBackpackWeaponsArray = function() {
+        return backpack_array;
+    };
+
+    this.hasAmmo = function(weapon_val) {
+        var key = _shop.getSpliceKey(weapon_val);
+
+        if(backpack_array[key][1] > 0 || backpack_array[key][1] === "NA") {
+            return true;
+        } else {
+            return false;
+        }
+    };
+
+//  create a back class for backpack_array
     this.addAmmoToWeaponsDisplay = function() {
         backpack_weapons = [];
         for(var item in backpack_array) {
@@ -237,6 +250,27 @@ function Shop() {
         for(var i in backpack_array) {
             var get_name = backpack_array[i][0];
             if(get_name === new_name) {
+                backpack_array[i][1] = set_ammo;
+            }
+        }
+    };
+
+    this.manageBackpackAmmo = function(weapon_name, ammo_amount) {
+        var set_ammo = 0;
+        var backpack_key = 0;
+
+        for(var key in weaponsArray) {
+            var weapon = weaponsArray[key].getName();
+
+            if(weapon === weapon_name) {
+                weaponsArray[key].removeAmmo();
+                set_ammo = weaponsArray[key].getAmmo();
+            }
+        }
+
+        for(var i in backpack_array) {
+            var get_name = backpack_array[i][0];
+            if(get_name === weapon_name) {
                 backpack_array[i][1] = set_ammo;
             }
         }

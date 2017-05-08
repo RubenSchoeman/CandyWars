@@ -95,7 +95,7 @@ function Location(location_name, engine) {
                 amount = 0;
             }
 
-            $('#Candy' + key).html(candy + ":" + " amount: " + amount + " price: " + price);
+            $('#Candy' + key).html(candy + ": price: " + price);
         }
     };
 

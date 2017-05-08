@@ -12,6 +12,7 @@ function Travel() {
 
             location = $('#travel_To :selected').val();
             var locationString = engine.getSelectedTravelToValue();
+            var string = engine.createString(locationString);
             var can_Travel = engine.checkCanTravel(location);
 
             if(location !== stay && can_Travel) {
@@ -19,7 +20,7 @@ function Travel() {
                 engine.countDay();
 
                 $('#results_table').html('');
-                $('#current_location').html(locationString);
+                $('#current_location').html(string);
 
                 citiesArray[location].setRooms("Player");
 

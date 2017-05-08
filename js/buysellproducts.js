@@ -35,18 +35,19 @@ function BuySell() {
             current_location = player.getPlayerLocation();
             player_money = player.getPlayerMoney();
             product_val_key = _buysell.getProductBuyKey();
-            backpack_products = [];
+            //backpack_products = [];
 
             _buysell.promptPlayerBuy(function(productAmmount) {
                 var stock_price = _buysell.getProductStockPrice(current_location, product_val_key);
                 var isTrue = productAmmount;
 
                 if (_buysell.continueTransaction(productAmmount, current_location, product_val_key, stock_price, player_money, isTrue)) {
-                    _buysell.createBackpackList(current_location, product_val_key, productAmmount, counter, stock_price);
+                    _buysell.createBackpackList(current_location, product_val_key, productAmmount, counter);
                     _buysell.deductMoney(player_money, stock_price, productAmmount);
                     _buysell.buyCityStock(current_location, product_val_key, productAmmount);
                     _buysell.displayPlayerMoney(player_money);
                     player.setPlayerMoney(player_money);
+                    engine.checkCityStock(current_location);
                 }
 
             });
@@ -86,14 +87,14 @@ function BuySell() {
                         _buysell.sellCityStock(current_location, product_wanted_key, sell_Ammount);
                         _buysell.displayPlayerMoney(player_money);
                         player.setPlayerMoney(player_money);
+                        engine.checkCityStock(current_location);
 
                         if (have_Amount === 0) {
-                            backpack_key = _buysell.removeFromBackpackList(backpack_use, string);
-                            backpack_use.splice(backpack_key, 1);
+                            _buysell.removeFromBackpackList(string);
                             $('#results_table').html("<h3>You have sold all your " + string + "</h3>");
                         }
-                    } else {
-                        $('#results_table').html("<h3>You do not have that amount or this city does not need the item</h3>");
+                    } else if(string === name_String && have_Amount < sell_Ammount) {
+                        $('#results_table').html("<h3>You do not have that amount of products</h3>");
                     }
                 }
             });
@@ -106,11 +107,35 @@ function BuySell() {
 *   all the function below are used withing the buy and sell function above
 *
 */
-    this.createBackpackList = function(current_location, product_val_key, productAmmount, i, stock_Price) {
-        backpack_products.push('<option>' + citiesArray[current_location].getStockArrayName(product_val_key) + ":" + productAmmount + '</option>');
-        backpack_use.push([candyArray[product_val_key].getName(),productAmmount, stock_Price , product_val_key, counter]);
-        $('#product' + i).html(backpack_products.join('\n'));
-        counter = i + 1;
+    this.createBackpackList = function(current_location, product_val_key, productAmmount, i) {
+        var candy_type = candyArray[product_val_key].getName();
+        var candy_is_in_array = false;
+
+        for(var key in backpack_use) {
+            var name = backpack_use[key][0];
+
+            if(name === candy_type) {
+                candy_is_in_array = true;
+                backpack_use[key][1] = backpack_use[key][1] + productAmmount;
+            }
+        }
+
+
+        if(candy_is_in_array) {
+            backpack_products = [];
+
+
+            for(var item in backpack_use) {
+                backpack_products.push('<option>' + backpack_use[item][0] + ":" + backpack_use[item][1] + '</option>');
+            }
+
+            $('#product_Select').html(backpack_products.join('\n'));
+        } else {
+            backpack_use.push([candy_type, productAmmount, product_val_key, counter]);
+            backpack_products.push('<option>' + citiesArray[current_location].getStockArrayName(product_val_key) + ":" + productAmmount + '</option>');
+            $('#product_Select').html(backpack_products.join('\n'));
+            counter = i + 1;
+        }
     };
 
     this.resetBackpacks = function() {
@@ -118,21 +143,27 @@ function BuySell() {
         backpack_use = [];
     };
 
-    this.removeFromBackpackList = function(backpack_use, string) {
+    this.removeFromBackpackList = function(string) {
         counter = 0;
         var backpack_Key = 0;
+        backpack_products = [];
 
         for (var unit in backpack_use) {
+            var test = backpack_use[unit][0];
             if(string !== backpack_use[unit][0]) {
-                $('#product' + counter).html('<option>' + backpack_use[unit][0] + ":" + backpack_use[unit][1] + '</option>');
                 counter += 1;
             } else if (string === backpack_use[unit][0]) {
-                $('#product' + counter).html("");
                 backpack_key = counter;
             }
         }
-        $('#product' + counter).html("");
-        return backpack_key;
+
+        backpack_use.splice(backpack_key, 1);
+
+        for(var item in backpack_use) {
+            backpack_products.push('<option>' + backpack_use[item][0] + ":" + backpack_use[item][1] + '</option>');
+        }
+
+        $('#product_Select').html(backpack_products.join('\n'));
     };
 
     this.getBackpackArray = function(callback) {
@@ -158,6 +189,7 @@ function BuySell() {
     this.removeAmountFromBackpack = function(backpack_use, string, sell_Ammount) {
         var temp = 0;
         var backpack_Key = 0;
+        backpack_products = [];
 
         for (var unit in backpack_use) {
             var item_name = backpack_use[unit][0];
@@ -168,6 +200,12 @@ function BuySell() {
                 backpack_use[backpack_Key][1] -= sell_Ammount;
             }
         }
+
+        for(var item in backpack_use) {
+            backpack_products.push('<option>' + backpack_use[item][0] + ":" + backpack_use[item][1] + '</option>');
+        }
+
+        $('#product_Select').html(backpack_products.join('\n'));
     };
 
     this.continueTransaction = function(productAmmount, current_location, product_val_key, stock_price, player_money, isTrue) {

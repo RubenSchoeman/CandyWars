@@ -2,7 +2,7 @@ function Engine(){
     var _engine = this;
     var location = 0;
     var day_counter = 0;
-    var days_left = 10;
+    var days_left = 41;
 
 
     this.countDay = function() {
@@ -13,11 +13,48 @@ function Engine(){
 
         if(days_left <= 0) {
             _engine.setAllBtnFalse();
+            $('#results_table').html('<h3>You have survived 40 days</h3>');
         }
     };
 
     this.getDayCounter = function() {
         return day_counter;
+    };
+
+    this.createString = function(weapon_key) {
+
+        var string = "";
+        var char = weapon_key[0];
+        var string_length = weapon_key.length;
+        var stop_key = 0;
+        var more_counters = 0;
+
+        for (var i = 0; i < string_length; i++){
+            char = weapon_key[i];
+            more_counters = i;
+            if(char === ":") {
+                stop_key = i + 1;
+            }
+
+        }
+
+        if(stop_key === 0) {
+            stop_key = more_counters + 2;
+        }
+
+        char = "";
+
+        for(var j = 0; j < stop_key; j++) {
+            string = string + char;
+            char = weapon_key[j];
+        }
+
+        return string;
+    };
+
+    this.setPoop = function() {
+        var hold_day_counter = day_counter;
+        day_counter = 0;
     };
 
     this.initCandyType = function(){
@@ -38,16 +75,36 @@ function Engine(){
         return temp_number;
     };
 
+
+// why not use a for loop: for(var i in candyArray)?
     this.getCandyKey = function(string) {
         var array_key = 0;
-        var name = candyArray[array_key].getName();
 
-        while(name !== string) {
-            array_key += 1;
-            name = candyArray[array_key].getName();
+        for(var key in candyArray) {
+            var name = candyArray[key].getName();
+
+            if(name === string) {
+                array_key = key;
+            }
         }
+
         return array_key;
     };
+
+    this.getWeaponKey = function(weapon_name) {
+        var weapon_key = 0;
+
+        for(var key in weaponsArray) {
+            var weapon = weaponsArray[key].getName();
+
+            if(weapon === weapon_name) {
+                weapon_key = key;
+            }
+        }
+
+        return weapon_key;
+    };
+
 
     this.randomHundred = function() {
         var temp = Math.ceil(Math.random() * 100 + 1);
@@ -128,7 +185,7 @@ function Engine(){
             if(enemy !== "Player") {
                 for (var num in npcArray) {
                     if(enemy === npcArray[num].getName()) {
-                        damage = damage + 2;
+                        damage = damage + engine.getRandomInt(0, 5);
                     }
                 }
             }
@@ -178,6 +235,7 @@ function Engine(){
         $('#run').prop('disabled', true);
         $('#surrender').prop('disabled', true);
         $('#bribe').prop('disabled', true);
+        $('#fight').prop('disabled', true);
     };
 
     this.setBtnSuccess = function() {
@@ -190,6 +248,7 @@ function Engine(){
         $('#run').prop('disabled', true);
         $('#surrender').prop('disabled', true);
         $('#bribe').prop('disabled', true);
+        $('#fight').prop('disabled', true);
     };
 
     this.setEncounterBtn = function() {
