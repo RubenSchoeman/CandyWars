@@ -136,10 +136,6 @@ function Encounter() {
                     engine.setBtnSuccess();
                     engine.resetPlayerBackpack();
 
-                    for(var key in temp_array) {
-                        $('#product' + counter).html("");
-                        counter += 1;
-                    }
                 } else {
                     $('#results_table').html('<h3>They see you have nothing and leave you be</h3>');
                     engine.setBtnSuccess();
@@ -187,9 +183,9 @@ function Encounter() {
                 var weapons_in_backpack = shop.checkWeaponsInBackpack();
 
                 engine.setEncounterBtn();
-                $('#fight').prop('disabled', false);
+                $('#fight').prop('disabled', true);
                 if(weapons_in_backpack) {
-
+                    $('#fight').prop('disabled', false);
                 }
 
 

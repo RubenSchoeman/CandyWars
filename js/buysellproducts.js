@@ -141,6 +141,8 @@ function BuySell() {
     this.resetBackpacks = function() {
         backpack_products = [];
         backpack_use = [];
+
+        $('#product_Select').html(backpack_products.join('\n'));
     };
 
     this.removeFromBackpackList = function(string) {
