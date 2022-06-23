@@ -238,7 +238,7 @@ function BuySell() {
 
 //  this function should only return a number
     this.promptPlayerBuy = function(callback) {
-        var productAmmount = parseInt(prompt("Please select amount to sell"));
+        var productAmmount = parseInt(prompt("Please select amount to buy"));
         if(isNaN(productAmmount)){
             callback(true);
         } else {
